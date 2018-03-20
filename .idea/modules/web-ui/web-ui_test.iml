@@ -21,6 +21,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="web-ui_main" />
+    <orderEntry type="module" module-name="domain_test" production-on-test="" />
     <orderEntry type="module" module-name="domain_main" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:2.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-data-jpa:2.0.0.RELEASE" level="project" />
