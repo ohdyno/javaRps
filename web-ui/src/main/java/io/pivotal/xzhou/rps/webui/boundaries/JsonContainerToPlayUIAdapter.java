@@ -4,7 +4,7 @@ import io.pivotal.xzhou.rps.webui.dto.JsonContainer;
 import io.pivotal.xzhou.rps.webui.dto.PlayResultAsJson;
 import rps.dependency.PlayUI;
 
-public class JsonContainerToPlayUIContainer implements PlayUI {
+public class JsonContainerToPlayUIAdapter implements PlayUI {
     private JsonContainer container;
 
     @Override

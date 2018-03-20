@@ -1,8 +1,7 @@
 package io.pivotal.xzhou.rps.webui.facade;
 
-import org.json.JSONException;
 import org.junit.Test;
-import org.skyscreamer.jsonassert.JSONAssert;
+import org.springframework.test.util.JsonExpectationsHelper;
 import rps.RockPaperScissors;
 import rps.dependency.HistoryUI;
 import rps.dependency.PlayUI;
@@ -10,34 +9,36 @@ import rps.entity.Throws;
 
 public class GamePlayTest {
 
+    private JsonExpectationsHelper jsonAssert = new JsonExpectationsHelper();
+
     @Test
-    public void givenPlayer1WillWin_whenPlayingARound_theGameShouldReturnThatPlayer1HasWon() throws JSONException {
+    public void givenPlayer1WillWin_whenPlayingARound_theGameShouldReturnThatPlayer1HasWon() throws Exception {
         RockPaperScissors rps = new Player1WinsStub();
         Game game = new Game(rps);
-        JSONAssert.assertEquals("{result:\"player 1 wins\"}", game.play("rock", "paper").toJson(), false);
+        jsonAssert.assertJsonEqual("{result:\"player 1 wins\"}", game.play("rock", "paper"));
     }
 
     @Test
-    public void givenPlayer2WillWin_whenPlayingARound_theGameShouldReturnThatPlayer2HasWon() throws JSONException {
+    public void givenPlayer2WillWin_whenPlayingARound_theGameShouldReturnThatPlayer2HasWon() throws Exception {
         RockPaperScissors rps = new Player2WinsStub();
         Game game = new Game(rps);
-        JSONAssert.assertEquals("{result:\"player 2 wins\"}", game.play("rock", "rock").toJson(), false);
+        jsonAssert.assertJsonEqual("{result:\"player 2 wins\"}", game.play("rock", "rock"));
     }
 
     @Test
-    public void givenTheRoundWillBeATie_whenPlayingARound_theGameShouldReturnThatItWasATie() throws JSONException {
+    public void givenTheRoundWillBeATie_whenPlayingARound_theGameShouldReturnThatItWasATie() throws Exception {
         RockPaperScissors rps = new TieStub();
         Game game = new Game(rps);
-        JSONAssert.assertEquals("{result:\"tie\"}", game.play("rock", "rock").toJson(), false);
+        jsonAssert.assertJsonEqual("{result:\"tie\"}", game.play("rock", "rock"));
     }
 
-    @Test(expected = Game.IllegalThrowException.class)
+    @Test(expected = Game.InvalidThrow.class)
     public void givenPlayer1ThrowIsInvalid_whenPlayingARound_theGameShouldThrowIllegalThrowException() {
         Game game = new Game(null);
         game.play("sailboat", "rock");
     }
 
-    @Test(expected = Game.IllegalThrowException.class)
+    @Test(expected = Game.InvalidThrow.class)
     public void givenPlayer2ThrowIsInvalid_whenPlayingARound_theGameShouldThrowIllegalThrowException() {
         Game game = new Game(null);
         game.play("rock", "sailboat");

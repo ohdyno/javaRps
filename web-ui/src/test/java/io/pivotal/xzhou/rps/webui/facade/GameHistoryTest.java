@@ -1,8 +1,7 @@
 package io.pivotal.xzhou.rps.webui.facade;
 
-import org.json.JSONException;
 import org.junit.Test;
-import org.skyscreamer.jsonassert.JSONAssert;
+import org.springframework.test.util.JsonExpectationsHelper;
 import rps.RockPaperScissors;
 import rps.dependency.HistoryUI;
 import rps.dependency.PlayUI;
@@ -17,15 +16,17 @@ import static rps.entity.Results.Tie;
 import static rps.entity.Throws.*;
 
 public class GameHistoryTest {
+    private JsonExpectationsHelper jsonAssert = new JsonExpectationsHelper();
+
     @Test
-    public void givenNoRoundsHaveBeenPlayed_whenGettingHistoryFromGame_thenTheRoundsPlayedShouldBeEmpty() throws JSONException {
+    public void givenNoRoundsHaveBeenPlayed_whenGettingHistoryFromGame_thenTheRoundsPlayedShouldBeEmpty() throws Exception {
         RockPaperScissors rps = new NoRoundsPlayedStub();
         Game game = new Game(rps);
-        JSONAssert.assertEquals("{rounds:[]}", game.getHistory().toJson(), false);
+        jsonAssert.assertJsonEqual("{rounds:[]}", game.getHistory());
     }
 
     @Test
-    public void givenRoundsHaveBeenPlayed_whenGettingHistoryFromGame_thenTheRoundsPlayedShouldContainAllRoundsPlayed() throws JSONException {
+    public void givenRoundsHaveBeenPlayed_whenGettingHistoryFromGame_thenTheRoundsPlayedShouldContainAllRoundsPlayed() throws Exception {
         List<Round> roundsPlayed = Arrays.asList(
                 new Round(Rock, Paper, Player2Wins),
                 new Round(Scissors, Scissors, Tie)
@@ -36,7 +37,7 @@ public class GameHistoryTest {
                 "{p1:scissors,p2:scissors,result:tie}" +
                 "]}";
         Game game = new Game(rps);
-        JSONAssert.assertEquals(expected, game.getHistory().toJson(), false);
+        jsonAssert.assertJsonEqual(expected, game.getHistory());
     }
 
     private class NoRoundsPlayedStub implements RockPaperScissors {

@@ -1,8 +1,7 @@
 package io.pivotal.xzhou.rps.webui.facade;
 
 import io.pivotal.xzhou.rps.webui.boundaries.JsonContainerToHistoryUIAdapter;
-import io.pivotal.xzhou.rps.webui.boundaries.JsonContainerToPlayUIContainer;
-import io.pivotal.xzhou.rps.webui.dto.JsonContainer;
+import io.pivotal.xzhou.rps.webui.boundaries.JsonContainerToPlayUIAdapter;
 import rps.RockPaperScissors;
 import rps.entity.Throws;
 
@@ -19,11 +18,11 @@ public class Game {
         this.rps = rps;
     }
 
-    public JsonContainer play(String p1Throw, String p2Throw) {
-        JsonContainerToPlayUIContainer result = new JsonContainerToPlayUIContainer();
+    public String play(String p1Throw, String p2Throw) {
+        JsonContainerToPlayUIAdapter result = new JsonContainerToPlayUIAdapter();
         validateThrows(Arrays.asList(p1Throw, p2Throw));
         rps.playRound(convertToRPSThrows(p1Throw), convertToRPSThrows(p2Throw), result);
-        return result.getContainer();
+        return result.getContainer().toJson();
     }
 
     private void validateThrows(List<String> rpsThrows) {
@@ -35,7 +34,7 @@ public class Game {
         });
 
         if (!invalidThrows.isEmpty()) {
-            throw new IllegalThrowException(invalidThrows);
+            throw new InvalidThrow(invalidThrows);
         }
     }
 
@@ -53,17 +52,16 @@ public class Game {
         }
     }
 
-
-    public JsonContainer getHistory() {
+    public String getHistory() {
         JsonContainerToHistoryUIAdapter resultHandler = new JsonContainerToHistoryUIAdapter();
         rps.getHistory(resultHandler);
-        return resultHandler.getContainer();
+        return resultHandler.getContainer().toJson();
     }
 
-    public static class IllegalThrowException extends RuntimeException {
+    public static class InvalidThrow extends RuntimeException {
         private final List<String> invalidThrows;
 
-        IllegalThrowException(List<String> invalidThrows) {
+        InvalidThrow(List<String> invalidThrows) {
             this.invalidThrows = invalidThrows;
         }
 
