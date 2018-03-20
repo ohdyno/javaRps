@@ -2,64 +2,57 @@ package rps;
 
 import com.greghaskins.spectrum.Spectrum;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
-import org.mockito.MockitoAnnotations;
-import rps.dependency.HistoryUI;
-import rps.dependency.PlayUI;
 import rps.doubles.FakeRoundsRepo;
+import rps.doubles.HistoryUISpy;
+import rps.doubles.PlayUIDummy;
 import rps.entity.Results;
 import rps.entity.Round;
 
-import java.util.List;
+import java.util.Arrays;
+import java.util.function.Supplier;
 
-import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.*;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static rps.entity.Throws.Rock;
-import static rps.entity.Throws.Scissors;
+import static com.greghaskins.spectrum.Spectrum.*;
+import static rps.assertions.HistoryUISpyAssert.assertThat;
+import static rps.entity.Throws.*;
 
 @RunWith(Spectrum.class)
 public class HistoryTest {
 
-    @Captor
-    private ArgumentCaptor<List<Round>> captor;
-
     public HistoryTest() {
-        feature("History of Rounds Played", () -> {
-            MockitoAnnotations.initMocks(this);
-            RPS rps = new RPS(new FakeRoundsRepo());
+        describe("For the History feature", () -> {
+            Supplier<RPS> rps = let(() -> new RPS(new FakeRoundsRepo()));
+            Supplier<HistoryUISpy> uiSpy = let(HistoryUISpy::new);
+            PlayUIDummy dummy = new PlayUIDummy();
 
-            scenario("No rounds have been played", () -> {
-                HistoryUI uiSpy = mock(HistoryUI.class);
+            describe("given no rounds have been played", () -> {
+                describe("when the user requests the history", () -> {
+                    it("then tells the PlayUI no rounds have been played", () -> {
+                        rps.get().getHistory(uiSpy.get());
 
-                when("the user requests the history", () -> {
-                    rps.getHistory(uiSpy);
-                });
-
-                then("the PlayUI is told that no rounds have been played", () -> {
-                    verify(uiSpy).noRounds();
+                        assertThat(uiSpy.get()).noRoundsWasCalled();
+                    });
                 });
             });
 
-            scenario("Rounds have been played", () -> {
-                HistoryUI uiSpy = mock(HistoryUI.class);
+            describe("given rounds have been played", () -> {
+                describe("when the user requests the history", () -> {
+                    it("then tells the PlayUI the rounds that have been played", () -> {
+                        rps.get().playRound(Rock, Scissors, dummy);
+                        rps.get().playRound(Paper, Paper, dummy);
 
-                given("rounds have been played before", () -> {
-                    rps.playRound(Rock, Scissors, mock(PlayUI.class));
-                });
+                        rps.get().getHistory(uiSpy.get());
 
-                when("the user requests the history", () -> {
-                    rps.getHistory(uiSpy);
-                });
-
-                then("the PlayUI is given the rounds that have been played", () -> {
-                    verify(uiSpy).roundsPlayed(captor.capture());
-                    List<Round> rounds = captor.getValue();
-                    assertThat(rounds).contains(new Round(Rock, Scissors, Results.Player1Wins));
+                        assertThat(uiSpy.get()).roundsPlayedWasCalledWith(
+                                Arrays.asList(
+                                        new Round(Rock, Scissors, Results.Player1Wins),
+                                        new Round(Paper, Paper, Results.Tie)
+                                )
+                        );
+                    });
                 });
             });
         });
     }
+
+
 }
