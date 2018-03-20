@@ -1,7 +1,7 @@
 package rps.assertions;
 
 import org.assertj.core.api.AbstractAssert;
-import rps.doubles.HistoryUISpy;
+import rps.doubles.history.HistoryUISpy;
 import rps.entity.Round;
 
 import java.util.List;

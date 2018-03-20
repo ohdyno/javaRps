@@ -2,9 +2,9 @@ package rps;
 
 import com.greghaskins.spectrum.Spectrum;
 import org.junit.runner.RunWith;
-import rps.doubles.FakeRoundsRepo;
-import rps.doubles.HistoryUISpy;
-import rps.doubles.PlayUIDummy;
+import rps.doubles.history.FakeRoundsRepo;
+import rps.doubles.history.HistoryUISpy;
+import rps.doubles.play.PlayUIDummy;
 import rps.entity.Results;
 import rps.entity.Round;
 

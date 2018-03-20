@@ -1,4 +1,4 @@
-package rps.doubles;
+package rps.doubles.history;
 
 import rps.dependency.HistoryUI;
 import rps.entity.Round;

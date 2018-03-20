@@ -3,7 +3,7 @@ package rps;
 import com.greghaskins.spectrum.Spectrum;
 import org.junit.runner.RunWith;
 import rps.dependency.PlayUI;
-import rps.doubles.RoundsRepoDummy;
+import rps.doubles.history.RoundsRepoDummy;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.*;
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.when;

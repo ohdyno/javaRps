@@ -1,4 +1,4 @@
-package rps.doubles;
+package rps.doubles.play;
 
 import rps.dependency.PlayUI;
 

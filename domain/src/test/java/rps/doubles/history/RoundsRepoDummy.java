@@ -1,27 +1,23 @@
-package rps.doubles;
+package rps.doubles.history;
 
 import rps.entity.Round;
 import rps.dependency.RoundsRepo;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 
-public class FakeRoundsRepo implements RoundsRepo {
-    private List<Round> rounds = new ArrayList<>();
-
+public class RoundsRepoDummy implements RoundsRepo {
     @Override
     public void save(Round round) {
-        rounds.add(round);
     }
 
     @Override
     public boolean isEmpty() {
-        return rounds.isEmpty();
+        return false;
     }
 
     @Override
     public Collection<Round> findAll() {
-        return rounds;
+        return Collections.emptyList();
     }
 }
