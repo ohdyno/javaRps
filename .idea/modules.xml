@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/domain_test.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/domain_test.iml" group="domain" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/javaRps.iml" filepath="$PROJECT_DIR$/.idea/modules/javaRps.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/web-ui/javaRps-web-ui.iml" filepath="$PROJECT_DIR$/.idea/modules/web-ui/javaRps-web-ui.iml" group="web-ui" />
-      <module fileurl="file://$PROJECT_DIR$/web-ui/web-ui.iml" filepath="$PROJECT_DIR$/web-ui/web-ui.iml" group="web-ui" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/web-ui/web-ui_main.iml" filepath="$PROJECT_DIR$/.idea/modules/web-ui/web-ui_main.iml" group="web-ui" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/web-ui/web-ui_test.iml" filepath="$PROJECT_DIR$/.idea/modules/web-ui/web-ui_test.iml" group="web-ui" />
     </modules>

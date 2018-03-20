@@ -4,10 +4,10 @@ import org.json.JSONException;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import rps.RockPaperScissors;
-import rps.entity.Round;
-import rps.entity.Throws;
 import rps.dependency.HistoryUI;
 import rps.dependency.PlayUI;
+import rps.entity.Round;
+import rps.entity.Throws;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,23 +19,9 @@ import static rps.entity.Throws.*;
 public class GameHistoryTest {
     @Test
     public void givenNoRoundsHaveBeenPlayed_whenGettingHistoryFromGame_thenTheRoundsPlayedShouldBeEmpty() throws JSONException {
-        RockPaperScissors rps = noRoundsPlayedStub();
+        RockPaperScissors rps = new NoRoundsPlayedStub();
         Game game = new Game(rps);
         JSONAssert.assertEquals("{rounds:[]}", game.getHistory().toJson(), false);
-    }
-
-    private RockPaperScissors noRoundsPlayedStub() {
-        return new RockPaperScissors() {
-            @Override
-            public void playRound(Throws p1Throw, Throws p2Throw, PlayUI ui) {
-
-            }
-
-            @Override
-            public void getHistory(HistoryUI ui) {
-                ui.noRounds();
-            }
-        };
     }
 
     @Test
@@ -44,7 +30,7 @@ public class GameHistoryTest {
                 new Round(Rock, Paper, Player2Wins),
                 new Round(Scissors, Scissors, Tie)
         );
-        RockPaperScissors rps = multipleRoundsPlayedStub(roundsPlayed);
+        RockPaperScissors rps = new MultipleRoundsPlayedStub(roundsPlayed);
         String expected = "{rounds:[" +
                 "{p1:rock,p2:paper,result:\"player 2 wins\"}," +
                 "{p1:scissors,p2:scissors,result:tie}" +
@@ -53,17 +39,33 @@ public class GameHistoryTest {
         JSONAssert.assertEquals(expected, game.getHistory().toJson(), false);
     }
 
-    private RockPaperScissors multipleRoundsPlayedStub(List<Round> roundsPlayed) {
-        return new RockPaperScissors() {
-            @Override
-            public void playRound(Throws p1Throw, Throws p2Throw, PlayUI ui) {
+    private class NoRoundsPlayedStub implements RockPaperScissors {
+        @Override
+        public void playRound(Throws p1Throw, Throws p2Throw, PlayUI ui) {
 
-            }
+        }
 
-            @Override
-            public void getHistory(HistoryUI ui) {
-                ui.roundsPlayed(roundsPlayed);
-            }
-        };
+        @Override
+        public void getHistory(HistoryUI ui) {
+            ui.noRounds();
+        }
+    }
+
+    private class MultipleRoundsPlayedStub implements RockPaperScissors {
+        private final List<Round> roundsPlayed;
+
+        MultipleRoundsPlayedStub(List<Round> roundsPlayed) {
+            this.roundsPlayed = roundsPlayed;
+        }
+
+        @Override
+        public void playRound(Throws p1Throw, Throws p2Throw, PlayUI ui) {
+
+        }
+
+        @Override
+        public void getHistory(HistoryUI ui) {
+            ui.roundsPlayed(roundsPlayed);
+        }
     }
 }
