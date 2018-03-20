@@ -7,5 +7,5 @@ import java.util.Collection;
 public interface HistoryUI {
     void noRounds();
 
-    void roundsPlayed(Collection<Round> capture);
+    void roundsPlayed(Collection<Round> rounds);
 }
