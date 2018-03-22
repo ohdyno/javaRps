@@ -1,13 +1,13 @@
 package rps.doubles.repo;
 
-import rps.dependency.RoundsRepo;
+import rps.dependency.RoundsRepository;
 import rps.entity.Round;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class FakeRoundsRepo implements RoundsRepo {
+public class FakeRoundsRepository implements RoundsRepository {
     private List<Round> rounds = new ArrayList<>();
 
     @Override

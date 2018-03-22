@@ -1,6 +1,6 @@
 package io.pivotal.xzhou.rps.webui.configuration;
 
-import io.pivotal.xzhou.rps.webui.adapters.JpaToRoundsRepoAdapter;
+import io.pivotal.xzhou.rps.webui.adapters.JpaToRoundsRepositoryAdapter;
 import io.pivotal.xzhou.rps.webui.facade.Game;
 import io.pivotal.xzhou.rps.webui.repository.RoundEntityRepository;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +17,6 @@ public class ApplicationConfiguration {
 
     @Bean
     public Game constructGame() {
-        return new Game(new RPS(new JpaToRoundsRepoAdapter(jpaRepo)));
+        return new Game(new RPS(new JpaToRoundsRepositoryAdapter(jpaRepo)));
     }
 }

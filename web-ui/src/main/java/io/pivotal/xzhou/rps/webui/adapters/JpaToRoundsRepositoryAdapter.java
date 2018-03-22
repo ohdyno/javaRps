@@ -3,16 +3,16 @@ package io.pivotal.xzhou.rps.webui.adapters;
 import io.pivotal.xzhou.rps.webui.repository.RoundEntity;
 import io.pivotal.xzhou.rps.webui.repository.RoundEntityRepository;
 import rps.entity.Round;
-import rps.dependency.RoundsRepo;
+import rps.dependency.RoundsRepository;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class JpaToRoundsRepoAdapter implements RoundsRepo {
+public class JpaToRoundsRepositoryAdapter implements RoundsRepository {
 
     private final RoundEntityRepository jpaRepo;
 
-    public JpaToRoundsRepoAdapter(RoundEntityRepository jpaRepo) {
+    public JpaToRoundsRepositoryAdapter(RoundEntityRepository jpaRepo) {
         this.jpaRepo = jpaRepo;
     }
 

@@ -4,7 +4,7 @@ import rps.entity.Round;
 
 import java.util.Collection;
 
-public interface RoundsRepo {
+public interface RoundsRepository {
     void save(Round round);
 
     boolean isEmpty();

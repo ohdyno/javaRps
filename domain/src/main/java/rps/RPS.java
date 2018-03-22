@@ -2,15 +2,15 @@ package rps;
 
 import rps.dependency.HistoryProcessorDelegate;
 import rps.dependency.PlayResultProcessorDelegate;
-import rps.dependency.RoundsRepo;
+import rps.dependency.RoundsRepository;
 import rps.entity.Results;
 import rps.entity.Round;
 import rps.entity.Throws;
 
 public class RPS {
-    private final RoundsRepo repo;
+    private final RoundsRepository repo;
 
-    public RPS(RoundsRepo repo) {
+    public RPS(RoundsRepository repo) {
         this.repo = repo;
     }
 

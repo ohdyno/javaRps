@@ -1,12 +1,12 @@
 package rps.doubles.repo;
 
-import rps.dependency.RoundsRepo;
+import rps.dependency.RoundsRepository;
 import rps.entity.Round;
 
 import java.util.Collection;
 import java.util.Collections;
 
-public class RoundsRepoDummy implements RoundsRepo {
+public class RoundsRepositoryDummy implements RoundsRepository {
     @Override
     public void save(Round round) {
     }

@@ -4,7 +4,7 @@ import com.greghaskins.spectrum.Spectrum;
 import org.junit.runner.RunWith;
 import rps.doubles.history.HistoryProcessorDelegateStub;
 import rps.doubles.play.PlayResultProcessorDelegateDummy;
-import rps.doubles.repo.FakeRoundsRepo;
+import rps.doubles.repo.FakeRoundsRepository;
 import rps.entity.Round;
 
 import java.util.Arrays;
@@ -22,7 +22,7 @@ public class HistoryTest {
 
     public HistoryTest() {
         describe("For the History feature", () -> {
-            Supplier<RPS> rps = let(() -> new RPS(new FakeRoundsRepo()));
+            Supplier<RPS> rps = let(() -> new RPS(new FakeRoundsRepository()));
             Supplier<HistoryProcessorDelegateStub> stub = let(() -> new HistoryProcessorDelegateStub());
             PlayResultProcessorDelegateDummy dummy = new PlayResultProcessorDelegateDummy();
 

@@ -5,7 +5,7 @@ import com.greghaskins.spectrum.Variable;
 import org.junit.runner.RunWith;
 import rps.dependency.PlayResultProcessorDelegate;
 import rps.doubles.play.ResultProcessorProcessorDelegateStub;
-import rps.doubles.repo.RoundsRepoDummy;
+import rps.doubles.repo.RoundsRepositoryDummy;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,7 +15,7 @@ import static rps.entity.Throws.*;
 public class PlayTest {
     public PlayTest() {
         feature("Playing a round of RPS", () -> {
-            RPS rps = new RPS(new RoundsRepoDummy());
+            RPS rps = new RPS(new RoundsRepositoryDummy());
             String messageForPlayer1Wins = "player 1 wins";
             String messageForPlayer2Wins = "player 2 wins";
             String messageForTie = "tie";

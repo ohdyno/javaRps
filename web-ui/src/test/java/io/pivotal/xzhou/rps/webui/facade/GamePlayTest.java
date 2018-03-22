@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.JsonExpectationsHelper;
 import rps.RPS;
-import rps.doubles.repo.FakeRoundsRepo;
+import rps.doubles.repo.FakeRoundsRepository;
 
 public class GamePlayTest {
 
@@ -13,7 +13,7 @@ public class GamePlayTest {
     
     @Before
     public void setUp() {
-        game = new Game(new RPS(new FakeRoundsRepo()));
+        game = new Game(new RPS(new FakeRoundsRepository()));
     }
 
     @Test
