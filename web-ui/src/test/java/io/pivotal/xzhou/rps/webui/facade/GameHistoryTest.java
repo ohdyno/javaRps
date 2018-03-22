@@ -21,6 +21,10 @@ public class GameHistoryTest {
                 "{p1:scissors,p2:scissors,result:tie}" +
                 "]}";
         Game game = new Game(new RPS(new FakeRoundsRepo()));
+
+        game.play("rock", "paper");
+        game.play("scissors", "scissors");
+
         jsonAssert.assertJsonEqual(expected, game.getHistory());
     }
 }

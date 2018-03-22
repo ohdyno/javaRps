@@ -10,7 +10,7 @@ public class GamePlayTest {
 
     private JsonExpectationsHelper jsonAssert = new JsonExpectationsHelper();
     private Game game;
-
+    
     @Before
     public void setUp() {
         game = new Game(new RPS(new FakeRoundsRepo()));
@@ -18,12 +18,12 @@ public class GamePlayTest {
 
     @Test
     public void givenPlayer1WillWin_whenPlayingARound_theGameShouldReturnThatPlayer1HasWon() throws Exception {
-        jsonAssert.assertJsonEqual("{result:\"player 1 wins\"}", game.play("rock", "paper"));
+        jsonAssert.assertJsonEqual("{result:\"player 1 wins\"}", game.play("paper", "rock"));
     }
 
     @Test
     public void givenPlayer2WillWin_whenPlayingARound_theGameShouldReturnThatPlayer2HasWon() throws Exception {
-        jsonAssert.assertJsonEqual("{result:\"player 2 wins\"}", game.play("rock", "rock"));
+        jsonAssert.assertJsonEqual("{result:\"player 2 wins\"}", game.play("rock", "paper"));
     }
 
     @Test
