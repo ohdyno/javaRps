@@ -1,6 +1,6 @@
 package io.pivotal.xzhou.rps.webui.facade;
 
-import io.pivotal.xzhou.rps.webui.boundaries.JsonContainerToHistoryProcessorDelegateAdapter;
+import io.pivotal.xzhou.rps.webui.boundaries.HistoryToJsonProcessor;
 import io.pivotal.xzhou.rps.webui.boundaries.PlayResultToJsonProcessor;
 import rps.RPS;
 import rps.entity.Throws;
@@ -51,9 +51,7 @@ public class Game {
     }
 
     public String getHistory() {
-        JsonContainerToHistoryProcessorDelegateAdapter resultHandler = new JsonContainerToHistoryProcessorDelegateAdapter();
-        rps.getHistory(resultHandler);
-        return resultHandler.getContainer().toJson();
+        return rps.getHistory(new HistoryToJsonProcessor());
     }
 
     public static class InvalidThrow extends RuntimeException {
