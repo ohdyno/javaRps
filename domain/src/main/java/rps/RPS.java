@@ -7,14 +7,13 @@ import rps.entity.Results;
 import rps.entity.Round;
 import rps.entity.Throws;
 
-public class RPS implements RockPaperScissors {
+public class RPS {
     private final RoundsRepo repo;
 
     public RPS(RoundsRepo repo) {
         this.repo = repo;
     }
 
-    @Override
     public <P> P playRound(Throws p1Throw, Throws p2Throw, PlayResultProcessorDelegate<P> ui) {
         if (p1Throw.tie(p2Throw)) {
             repo.save(new Round(p1Throw, p2Throw, Results.Tie));
@@ -30,7 +29,6 @@ public class RPS implements RockPaperScissors {
         return ui.player2Wins();
     }
 
-    @Override
     public <H> H getHistory(HistoryProcessorDelegate<H> ui) {
         if (repo.isEmpty())
             return ui.noRounds();
