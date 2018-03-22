@@ -1,6 +1,6 @@
-package io.pivotal.xzhou.rps.webui.ports;
+package io.pivotal.xzhou.rps.webui.adapters;
 
-import io.pivotal.xzhou.rps.webui.boundaries.JpaToRoundsRepoAdapter;
+import io.pivotal.xzhou.rps.webui.adapters.JpaToRoundsRepoAdapter;
 import io.pivotal.xzhou.rps.webui.repository.RoundEntityRepository;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

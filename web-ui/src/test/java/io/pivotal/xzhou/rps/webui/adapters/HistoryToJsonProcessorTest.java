@@ -1,11 +1,9 @@
-package io.pivotal.xzhou.rps.webui.boundaries;
+package io.pivotal.xzhou.rps.webui.adapters;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.JsonExpectationsHelper;
-import rps.entity.Results;
 import rps.entity.Round;
-import rps.entity.Throws;
 
 import java.util.Arrays;
 
@@ -18,7 +16,7 @@ public class HistoryToJsonProcessorTest {
     private HistoryToJsonProcessor subject;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         jsonExpectationsHelper = new JsonExpectationsHelper();
         subject = new HistoryToJsonProcessor();
     }

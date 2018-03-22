@@ -1,7 +1,7 @@
 package io.pivotal.xzhou.rps.webui.facade;
 
-import io.pivotal.xzhou.rps.webui.boundaries.HistoryToJsonProcessor;
-import io.pivotal.xzhou.rps.webui.boundaries.PlayResultToJsonProcessor;
+import io.pivotal.xzhou.rps.webui.adapters.HistoryToJsonProcessor;
+import io.pivotal.xzhou.rps.webui.adapters.PlayResultToJsonProcessor;
 import rps.RPS;
 import rps.entity.Throws;
 

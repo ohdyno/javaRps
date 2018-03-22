@@ -1,4 +1,4 @@
-package io.pivotal.xzhou.rps.webui.boundaries;
+package io.pivotal.xzhou.rps.webui.adapters;
 
 import io.pivotal.xzhou.rps.webui.dto.HistoryAsJson;
 import rps.dependency.HistoryProcessorDelegate;
