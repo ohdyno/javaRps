@@ -5,7 +5,7 @@ import rps.dependency.PlayUI;
 import rps.entity.Throws;
 
 public interface RockPaperScissors {
-    public void playRound(Throws p1Throw, Throws p2Throw, PlayUI ui);
+    public <P> P playRound(Throws p1Throw, Throws p2Throw, PlayUI<P> ui);
 
-    public void getHistory(HistoryUI ui);
+    public <H> H getHistory(HistoryUI<H> ui);
 }

@@ -25,7 +25,7 @@ public class HistoryTest {
     @Test
     public void whenGettingTheHistoryFromTheGame_thenTheResultIsReturnedAsProperJsonString() throws Exception {
         mvc.perform(get("/play/rock/scissors"));
-        mvc.perform(get("/history"))
+        mvc.perform(get("/repo"))
                 .andExpect(content().json("{" +
                         "rounds:" + "[{'p1':'rock','p2':'scissors','result':'player 1 wins'}]" +
                         "}"));

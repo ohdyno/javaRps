@@ -2,7 +2,7 @@ package io.pivotal.xzhou.rps.webui.facade;
 
 import io.pivotal.xzhou.rps.webui.boundaries.JsonContainerToHistoryUIAdapter;
 import io.pivotal.xzhou.rps.webui.boundaries.JsonContainerToPlayUIAdapter;
-import rps.RockPaperScissors;
+import rps.RPS;
 import rps.entity.Throws;
 
 import java.util.ArrayList;
@@ -12,9 +12,9 @@ import java.util.List;
 import static rps.entity.Throws.*;
 
 public class Game {
-    private final RockPaperScissors rps;
+    private final RPS rps;
 
-    public Game(RockPaperScissors rps) {
+    public Game(RPS rps) {
         this.rps = rps;
     }
 

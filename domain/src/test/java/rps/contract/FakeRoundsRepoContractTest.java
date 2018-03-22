@@ -1,7 +1,7 @@
 package rps.contract;
 
 import rps.dependency.RoundsRepo;
-import rps.doubles.history.FakeRoundsRepo;
+import rps.doubles.repo.FakeRoundsRepo;
 
 public class FakeRoundsRepoContractTest extends RoundsRepoContractTest {
     @Override

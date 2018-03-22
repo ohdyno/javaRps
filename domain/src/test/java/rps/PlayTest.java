@@ -1,13 +1,14 @@
 package rps;
 
 import com.greghaskins.spectrum.Spectrum;
+import com.greghaskins.spectrum.Variable;
 import org.junit.runner.RunWith;
 import rps.dependency.PlayUI;
-import rps.doubles.history.RoundsRepoDummy;
+import rps.doubles.play.ResultProcessorDelegateStub;
+import rps.doubles.repo.RoundsRepoDummy;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.*;
-import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.when;
-import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static rps.entity.Throws.*;
 
 @RunWith(Spectrum.class)
@@ -15,20 +16,19 @@ public class PlayTest {
     public PlayTest() {
         feature("Playing a round of RPS", () -> {
             RPS rps = new RPS(new RoundsRepoDummy());
+            String messageForPlayer1Wins = "player 1 wins";
+            String messageForPlayer2Wins = "player 2 wins";
+            String messageForTie = "tie";
+            PlayUI<String> stub = new ResultProcessorDelegateStub(messageForPlayer1Wins, messageForPlayer2Wins, messageForTie);
+            Variable<String> result = new Variable<>();
 
             scenarioOutline("player 1 wins", (player1Throw, player2Throw) -> {
-                        PlayUI uiSpy = mock(PlayUI.class);
-
                         when("player 1 throws " + player1Throw + " and player 2 throws " + player2Throw, () -> {
-                            rps.playRound(player1Throw, player2Throw, uiSpy);
+                            result.set(rps.playRound(player1Throw, player2Throw, stub));
                         });
 
-                        then("PlayUI is told that player 1 wins", () -> {
-                            verify(uiSpy).player1Wins();
-                        });
-
-                        and("PlayUI is not told that player 2 wins", () -> {
-                            verify(uiSpy, never()).player2Wins();
+                        then("tell the result process delegate that player 1 wins", () -> {
+                            assertThat(result.get()).isEqualTo(messageForPlayer1Wins);
                         });
                     },
 
@@ -40,18 +40,12 @@ public class PlayTest {
             );
 
             scenarioOutline("player 2 wins", (player1Throw, player2Throw) -> {
-                        PlayUI uiSpy = mock(PlayUI.class);
-
                         when("player 1 throws " + player1Throw + " and player 2 throws " + player2Throw, () -> {
-                            rps.playRound(player1Throw, player2Throw, uiSpy);
+                            result.set(rps.playRound(player1Throw, player2Throw, stub));
                         });
 
-                        then("PlayUI is told that player 2 wins", () -> {
-                            verify(uiSpy).player2Wins();
-                        });
-
-                        and("PlayUI is not told that player 1 wins", () -> {
-                            verify(uiSpy, never()).player1Wins();
+                        then("tell the result process delegate that player 2 wins", () -> {
+                            assertThat(result.get()).isEqualTo(messageForPlayer2Wins);
                         });
                     },
 
@@ -63,22 +57,12 @@ public class PlayTest {
             );
 
             scenarioOutline("tie", (sameThrow) -> {
-                        PlayUI uiSpy = mock(PlayUI.class);
-
                         when("player 1 throws " + sameThrow + " and player 2 throws " + sameThrow, () -> {
-                            rps.playRound(sameThrow, sameThrow, uiSpy);
+                            result.set(rps.playRound(sameThrow, sameThrow, stub));
                         });
 
-                        then("PlayUI is told that it is a tie", () -> {
-                            verify(uiSpy).tie();
-                        });
-
-                        and("PlayUI is not told that player 2 wins", () -> {
-                            verify(uiSpy, never()).player2Wins();
-                        });
-
-                        and("PlayUI is not told that player 1 wins", () -> {
-                            verify(uiSpy, never()).player1Wins();
+                        then("tell the result process delegate that player 2 wins", () -> {
+                            assertThat(result.get()).isEqualTo(messageForTie);
                         });
                     },
 
@@ -90,4 +74,5 @@ public class PlayTest {
             );
         });
     }
+
 }

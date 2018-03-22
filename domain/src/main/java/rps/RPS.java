@@ -14,26 +14,27 @@ public class RPS implements RockPaperScissors {
         this.repo = repo;
     }
 
-    public void playRound(Throws p1Throw, Throws p2Throw, PlayUI ui) {
-        Results result;
+    @Override
+    public <P> P playRound(Throws p1Throw, Throws p2Throw, PlayUI<P> ui) {
         if (p1Throw.tie(p2Throw)) {
-            ui.tie();
-            result = Results.Tie;
-        } else if (p1Throw.beats(p2Throw)) {
-            ui.player1Wins();
-            result = Results.Player1Wins;
-        } else {
-            ui.player2Wins();
-            result = Results.Player2Wins;
+            repo.save(new Round(p1Throw, p2Throw, Results.Tie));
+            return ui.tie();
         }
-        Round round = new Round(p1Throw, p2Throw, result);
-        repo.save(round);
+
+        if (p1Throw.beats(p2Throw)) {
+            repo.save(new Round(p1Throw, p2Throw, Results.Player1Wins));
+            return ui.player1Wins();
+        }
+
+        repo.save(new Round(p1Throw, p2Throw, Results.Player2Wins));
+        return ui.player2Wins();
     }
 
-    public void getHistory(HistoryUI ui) {
+    @Override
+    public <H> H getHistory(HistoryUI<H> ui) {
         if (repo.isEmpty())
-            ui.noRounds();
+            return ui.noRounds();
         else
-            ui.roundsPlayed(repo.findAll());
+            return ui.roundsPlayed(repo.findAll());
     }
 }
