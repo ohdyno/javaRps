@@ -1,6 +1,6 @@
 package rps;
 
-import rps.dependency.HistoryUI;
+import rps.dependency.HistoryProcessorDelegate;
 import rps.dependency.PlayUI;
 import rps.dependency.RoundsRepo;
 import rps.entity.Results;
@@ -31,7 +31,7 @@ public class RPS implements RockPaperScissors {
     }
 
     @Override
-    public <H> H getHistory(HistoryUI<H> ui) {
+    public <H> H getHistory(HistoryProcessorDelegate<H> ui) {
         if (repo.isEmpty())
             return ui.noRounds();
         else

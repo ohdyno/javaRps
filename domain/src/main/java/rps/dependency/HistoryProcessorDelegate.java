@@ -4,7 +4,7 @@ import rps.entity.Round;
 
 import java.util.Collection;
 
-public interface HistoryUI<T> {
+public interface HistoryProcessorDelegate<T> {
     T noRounds();
 
     T roundsPlayed(Collection<Round> rounds);

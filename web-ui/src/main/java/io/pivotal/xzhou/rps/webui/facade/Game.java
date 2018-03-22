@@ -1,6 +1,6 @@
 package io.pivotal.xzhou.rps.webui.facade;
 
-import io.pivotal.xzhou.rps.webui.boundaries.JsonContainerToHistoryUIAdapter;
+import io.pivotal.xzhou.rps.webui.boundaries.JsonContainerToHistoryProcessorDelegateAdapter;
 import io.pivotal.xzhou.rps.webui.boundaries.JsonContainerToPlayUIAdapter;
 import rps.RPS;
 import rps.entity.Throws;
@@ -53,7 +53,7 @@ public class Game {
     }
 
     public String getHistory() {
-        JsonContainerToHistoryUIAdapter resultHandler = new JsonContainerToHistoryUIAdapter();
+        JsonContainerToHistoryProcessorDelegateAdapter resultHandler = new JsonContainerToHistoryProcessorDelegateAdapter();
         rps.getHistory(resultHandler);
         return resultHandler.getContainer().toJson();
     }
