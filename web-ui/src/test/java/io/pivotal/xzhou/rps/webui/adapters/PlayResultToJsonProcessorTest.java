@@ -1,6 +1,5 @@
 package io.pivotal.xzhou.rps.webui.adapters;
 
-import io.pivotal.xzhou.rps.webui.adapters.PlayResultToJsonProcessor;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.JsonExpectationsHelper;

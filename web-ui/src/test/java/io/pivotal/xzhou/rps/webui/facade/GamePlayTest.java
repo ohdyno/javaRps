@@ -5,12 +5,13 @@ import org.junit.Test;
 import org.springframework.test.util.JsonExpectationsHelper;
 import rps.RPS;
 import rps.doubles.repo.FakeRoundsRepository;
+import rps.exceptions.InvalidThrows;
 
 public class GamePlayTest {
 
     private JsonExpectationsHelper jsonAssert = new JsonExpectationsHelper();
     private Game game;
-    
+
     @Before
     public void setUp() {
         game = new Game(new RPS(new FakeRoundsRepository()));
@@ -31,15 +32,13 @@ public class GamePlayTest {
         jsonAssert.assertJsonEqual("{result:\"tie\"}", game.play("rock", "rock"));
     }
 
-    @Test(expected = Game.InvalidThrow.class)
-    public void givenPlayer1ThrowIsInvalid_whenPlayingARound_theGameShouldThrowIllegalThrowException() {
-        Game game = new Game(null);
+    @Test(expected = InvalidThrows.class)
+    public void givenPlayer1ThrowIsInvalid_whenPlayingARound_theGameShouldThrowIllegalThrowException() throws InvalidThrows {
         game.play("sailboat", "rock");
     }
 
-    @Test(expected = Game.InvalidThrow.class)
-    public void givenPlayer2ThrowIsInvalid_whenPlayingARound_theGameShouldThrowIllegalThrowException() {
-        Game game = new Game(null);
+    @Test(expected = InvalidThrows.class)
+    public void givenPlayer2ThrowIsInvalid_whenPlayingARound_theGameShouldThrowIllegalThrowException() throws InvalidThrows {
         game.play("rock", "sailboat");
     }
 

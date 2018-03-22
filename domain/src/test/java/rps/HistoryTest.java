@@ -39,8 +39,8 @@ public class HistoryTest {
             describe("given rounds have been played", () -> {
                 describe("when the user requests the history", () -> {
                     it("then tells the history processor delegate the rounds that have been played", () -> {
-                        rps.get().playRound(Rock, Scissors, dummy);
-                        rps.get().playRound(Paper, Paper, dummy);
+                        rps.get().playRound("rock", "scissors", dummy);
+                        rps.get().playRound("paper", "paper", dummy);
 
                         Collection<Round> history = rps.get().getHistory(stub.get());
 

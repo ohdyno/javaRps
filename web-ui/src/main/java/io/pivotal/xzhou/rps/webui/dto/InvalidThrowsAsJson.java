@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.List;
+import java.util.Collection;
 
 public class InvalidThrowsAsJson implements JsonContainer {
     @JsonProperty("invalid_throws")
-    private List<String> invalidThrows;
+    private Collection<String> invalidThrows;
 
-    public InvalidThrowsAsJson(List<String> invalidThrows) {
+    public InvalidThrowsAsJson(Collection<String> invalidThrows) {
         this.invalidThrows = invalidThrows;
     }
 

@@ -6,10 +6,12 @@ import org.junit.runner.RunWith;
 import rps.dependency.PlayResultProcessorDelegate;
 import rps.doubles.play.ResultProcessorProcessorDelegateStub;
 import rps.doubles.repo.RoundsRepositoryDummy;
+import rps.exceptions.InvalidThrows;
+
+import java.util.Collection;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static rps.entity.Throws.*;
 
 @RunWith(Spectrum.class)
 public class PlayTest {
@@ -33,9 +35,9 @@ public class PlayTest {
                     },
 
                     withExamples(
-                            example(Rock, Scissors),
-                            example(Scissors, Paper),
-                            example(Paper, Rock)
+                            example("Rock", "Scissors"),
+                            example("Scissors", "Paper"),
+                            example("Paper", "Rock")
                     )
             );
 
@@ -50,9 +52,9 @@ public class PlayTest {
                     },
 
                     withExamples(
-                            example(Scissors, Rock),
-                            example(Paper, Scissors),
-                            example(Rock, Paper)
+                            example("Scissors", "Rock"),
+                            example("Paper", "Scissors"),
+                            example("Rock", "Paper")
                     )
             );
 
@@ -67,11 +69,35 @@ public class PlayTest {
                     },
 
                     withExamples(
-                            example(Scissors),
-                            example(Paper),
-                            example(Rock)
+                            example("Scissors"),
+                            example("Paper"),
+                            example("Rock")
                     )
             );
+
+            scenario("invalid throws", () -> {
+                Variable<String> player1Throw = new Variable<>();
+                Variable<String> player2Throw = new Variable<>();
+                Variable<InvalidThrows> invalidThrows = new Variable<>();
+
+                given("invalid throws for both throws", () -> {
+                    player1Throw.set("sailboat");
+                    player2Throw.set("something invalid");
+                });
+
+                when("play a round", () -> {
+                    try {
+                        rps.playRound(player1Throw.get(), player2Throw.get(), stub);
+                    } catch (InvalidThrows e) {
+                        invalidThrows.set(e);
+                    }
+                });
+
+                then("receive an exception that contains a list of invalid throws", () -> {
+                    Collection<String> invalidThrowsFromException = invalidThrows.get().getInvalidThrows();
+                    assertThat(invalidThrowsFromException).containsExactlyInAnyOrder(player1Throw.get(), player2Throw.get());
+                });
+            });
         });
     }
 

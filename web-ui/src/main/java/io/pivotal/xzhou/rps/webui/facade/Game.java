@@ -3,13 +3,7 @@ package io.pivotal.xzhou.rps.webui.facade;
 import io.pivotal.xzhou.rps.webui.adapters.HistoryToJsonProcessor;
 import io.pivotal.xzhou.rps.webui.adapters.PlayResultToJsonProcessor;
 import rps.RPS;
-import rps.entity.Throws;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static rps.entity.Throws.*;
+import rps.exceptions.InvalidThrows;
 
 public class Game {
     private final RPS rps;
@@ -18,51 +12,11 @@ public class Game {
         this.rps = rps;
     }
 
-    public String play(String p1Throw, String p2Throw) {
-        validateThrows(Arrays.asList(p1Throw, p2Throw));
-        return rps.playRound(convertToRPSThrows(p1Throw), convertToRPSThrows(p2Throw), new PlayResultToJsonProcessor());
-    }
-
-    private void validateThrows(List<String> rpsThrows) {
-        List<String> invalidThrows = new ArrayList<>();
-        rpsThrows.forEach(rpsThrow -> {
-            if (invalidThrow(rpsThrow)) {
-                invalidThrows.add(rpsThrow);
-            }
-        });
-
-        if (!invalidThrows.isEmpty()) {
-            throw new InvalidThrow(invalidThrows);
-        }
-    }
-
-    private boolean invalidThrow(String rpsThrow) {
-        return !(rpsThrow.equalsIgnoreCase("rock") || rpsThrow.equalsIgnoreCase("scissors") || rpsThrow.equalsIgnoreCase("paper"));
-    }
-
-    private Throws convertToRPSThrows(String rpsThrow) {
-        if (rpsThrow.equalsIgnoreCase("rock")) {
-            return Rock;
-        } else if (rpsThrow.equalsIgnoreCase("scissors")) {
-            return Scissors;
-        } else {
-            return Paper;
-        }
+    public String play(String p1Throw, String p2Throw) throws InvalidThrows {
+        return rps.playRound(p1Throw, p2Throw, new PlayResultToJsonProcessor());
     }
 
     public String getHistory() {
         return rps.getHistory(new HistoryToJsonProcessor());
-    }
-
-    public static class InvalidThrow extends RuntimeException {
-        private final List<String> invalidThrows;
-
-        InvalidThrow(List<String> invalidThrows) {
-            this.invalidThrows = invalidThrows;
-        }
-
-        public List<String> getInvalidThrows() {
-            return invalidThrows;
-        }
     }
 }

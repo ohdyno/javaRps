@@ -4,6 +4,7 @@ import io.pivotal.xzhou.rps.webui.dto.InvalidThrowsAsJson;
 import io.pivotal.xzhou.rps.webui.facade.Game;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import rps.exceptions.InvalidThrows;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,13 +21,13 @@ class PlayController {
 
     @GetMapping(value = "/play/{p1Throw}/{p2Throw}", produces = APPLICATION_JSON_VALUE)
     public String play(@PathVariable String p1Throw,
-                       @PathVariable String p2Throw) {
+                       @PathVariable String p2Throw) throws InvalidThrows {
         return game.play(p1Throw, p2Throw);
     }
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    @ExceptionHandler({Game.InvalidThrow.class})
-    public String handleIllegalThrow(HttpServletRequest request, Game.InvalidThrow exception) {
-        return new InvalidThrowsAsJson(exception.getInvalidThrows()).toJson();
+    @ExceptionHandler({InvalidThrows.class})
+    public String handleIllegalThrow(HttpServletRequest request, InvalidThrows invalidThrows) {
+        return new InvalidThrowsAsJson(invalidThrows.getInvalidThrows()).toJson();
     }
 }
