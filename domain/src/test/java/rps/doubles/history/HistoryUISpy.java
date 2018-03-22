@@ -5,17 +5,19 @@ import rps.entity.Round;
 
 import java.util.Collection;
 
-public class HistoryUISpy implements HistoryUI {
+public class HistoryUISpy implements HistoryUI<Void> {
     public boolean noRoundsWasCalled;
     public Collection<Round> rounds;
 
     @Override
-    public void noRounds() {
+    public Void noRounds() {
         noRoundsWasCalled = true;
+        return null;
     }
 
     @Override
-    public void roundsPlayed(Collection<Round> rounds) {
+    public Void roundsPlayed(Collection<Round> rounds) {
         this.rounds = rounds;
+        return null;
     }
 }

@@ -1,9 +1,9 @@
 package rps.dependency;
 
-public interface PlayUI {
-    void player1Wins();
+public interface PlayUI<T> {
+    T player1Wins();
 
-    void player2Wins();
+    T player2Wins();
 
-    void tie();
+    T tie();
 }

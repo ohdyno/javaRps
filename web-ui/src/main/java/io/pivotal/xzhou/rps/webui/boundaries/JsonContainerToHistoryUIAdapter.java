@@ -9,17 +9,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-public class JsonContainerToHistoryUIAdapter implements HistoryUI {
+public class JsonContainerToHistoryUIAdapter implements HistoryUI<Void> {
     private JsonContainer container;
 
     @Override
-    public void noRounds() {
+    public Void noRounds() {
         container = new HistoryAsJson(Collections.emptyList());
+        return null;
     }
 
     @Override
-    public void roundsPlayed(Collection<Round> rounds) {
+    public Void roundsPlayed(Collection<Round> rounds) {
         container = new HistoryAsJson(new ArrayList<>(rounds));
+        return null;
     }
 
     public JsonContainer getContainer() {
