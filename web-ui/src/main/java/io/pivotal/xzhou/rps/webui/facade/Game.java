@@ -1,7 +1,7 @@
 package io.pivotal.xzhou.rps.webui.facade;
 
 import io.pivotal.xzhou.rps.webui.boundaries.JsonContainerToHistoryProcessorDelegateAdapter;
-import io.pivotal.xzhou.rps.webui.boundaries.JsonContainerToPlayResultProcessorDelegateAdapter;
+import io.pivotal.xzhou.rps.webui.boundaries.PlayResultToJsonProcessor;
 import rps.RPS;
 import rps.entity.Throws;
 
@@ -19,10 +19,8 @@ public class Game {
     }
 
     public String play(String p1Throw, String p2Throw) {
-        JsonContainerToPlayResultProcessorDelegateAdapter result = new JsonContainerToPlayResultProcessorDelegateAdapter();
         validateThrows(Arrays.asList(p1Throw, p2Throw));
-        rps.playRound(convertToRPSThrows(p1Throw), convertToRPSThrows(p2Throw), result);
-        return result.getContainer().toJson();
+        return rps.playRound(convertToRPSThrows(p1Throw), convertToRPSThrows(p2Throw), new PlayResultToJsonProcessor());
     }
 
     private void validateThrows(List<String> rpsThrows) {
