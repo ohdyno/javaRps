@@ -1,11 +1,9 @@
 package io.pivotal.xzhou.rps.webui.boundaries;
 
-import io.pivotal.xzhou.rps.webui.dto.JsonContainer;
 import io.pivotal.xzhou.rps.webui.dto.PlayResultAsJson;
 import rps.dependency.PlayResultProcessorDelegate;
 
 public class PlayResultToJsonProcessor implements PlayResultProcessorDelegate<String> {
-    private JsonContainer container;
 
     @Override
     public String player1Wins() {
@@ -22,7 +20,4 @@ public class PlayResultToJsonProcessor implements PlayResultProcessorDelegate<St
         return new PlayResultAsJson("tie").toJson();
     }
 
-    public JsonContainer getContainer() {
-        return container;
-    }
 }
