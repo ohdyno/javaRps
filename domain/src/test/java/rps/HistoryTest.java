@@ -3,7 +3,7 @@ package rps;
 import com.greghaskins.spectrum.Spectrum;
 import org.junit.runner.RunWith;
 import rps.doubles.history.HistoryProcessorDelegateStub;
-import rps.doubles.play.PlayUIDummy;
+import rps.doubles.play.PlayResultProcessorDelegateDummy;
 import rps.doubles.repo.FakeRoundsRepo;
 import rps.entity.Round;
 
@@ -24,7 +24,7 @@ public class HistoryTest {
         describe("For the History feature", () -> {
             Supplier<RPS> rps = let(() -> new RPS(new FakeRoundsRepo()));
             Supplier<HistoryProcessorDelegateStub> stub = let(() -> new HistoryProcessorDelegateStub());
-            PlayUIDummy dummy = new PlayUIDummy();
+            PlayResultProcessorDelegateDummy dummy = new PlayResultProcessorDelegateDummy();
 
             describe("given no rounds have been played", () -> {
                 describe("when the user requests the history", () -> {

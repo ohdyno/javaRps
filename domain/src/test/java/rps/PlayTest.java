@@ -3,8 +3,8 @@ package rps;
 import com.greghaskins.spectrum.Spectrum;
 import com.greghaskins.spectrum.Variable;
 import org.junit.runner.RunWith;
-import rps.dependency.PlayUI;
-import rps.doubles.play.ResultProcessorDelegateStub;
+import rps.dependency.PlayResultProcessorDelegate;
+import rps.doubles.play.ResultProcessorProcessorDelegateStub;
 import rps.doubles.repo.RoundsRepoDummy;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.*;
@@ -19,7 +19,7 @@ public class PlayTest {
             String messageForPlayer1Wins = "player 1 wins";
             String messageForPlayer2Wins = "player 2 wins";
             String messageForTie = "tie";
-            PlayUI<String> stub = new ResultProcessorDelegateStub(messageForPlayer1Wins, messageForPlayer2Wins, messageForTie);
+            PlayResultProcessorDelegate<String> stub = new ResultProcessorProcessorDelegateStub(messageForPlayer1Wins, messageForPlayer2Wins, messageForTie);
             Variable<String> result = new Variable<>();
 
             scenarioOutline("player 1 wins", (player1Throw, player2Throw) -> {

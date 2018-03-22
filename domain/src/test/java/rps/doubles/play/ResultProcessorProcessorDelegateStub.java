@@ -1,13 +1,13 @@
 package rps.doubles.play;
 
-import rps.dependency.PlayUI;
+import rps.dependency.PlayResultProcessorDelegate;
 
-public class ResultProcessorDelegateStub implements PlayUI<String> {
+public class ResultProcessorProcessorDelegateStub implements PlayResultProcessorDelegate<String> {
     private final String messageForPlayer1Wins;
     private final String messageForPlayer2Wins;
     private final String messageForTie;
 
-    public ResultProcessorDelegateStub(String messageForPlayer1Wins, String messageForPlayer2Wins, String messageForTie) {
+    public ResultProcessorProcessorDelegateStub(String messageForPlayer1Wins, String messageForPlayer2Wins, String messageForTie) {
         this.messageForPlayer1Wins = messageForPlayer1Wins;
         this.messageForPlayer2Wins = messageForPlayer2Wins;
         this.messageForTie = messageForTie;

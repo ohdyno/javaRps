@@ -2,9 +2,9 @@ package io.pivotal.xzhou.rps.webui.boundaries;
 
 import io.pivotal.xzhou.rps.webui.dto.JsonContainer;
 import io.pivotal.xzhou.rps.webui.dto.PlayResultAsJson;
-import rps.dependency.PlayUI;
+import rps.dependency.PlayResultProcessorDelegate;
 
-public class JsonContainerToPlayUIAdapter implements PlayUI<Void> {
+public class JsonContainerToPlayResultProcessorDelegateAdapter implements PlayResultProcessorDelegate<Void> {
     private JsonContainer container;
 
     @Override

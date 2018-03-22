@@ -1,8 +1,8 @@
 package rps.doubles.play;
 
-import rps.dependency.PlayUI;
+import rps.dependency.PlayResultProcessorDelegate;
 
-public class PlayUIDummy implements PlayUI<Void> {
+public class PlayResultProcessorDelegateDummy implements PlayResultProcessorDelegate<Void> {
     @Override
     public Void player1Wins() {
         return null;

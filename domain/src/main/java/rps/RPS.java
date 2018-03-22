@@ -1,7 +1,7 @@
 package rps;
 
 import rps.dependency.HistoryProcessorDelegate;
-import rps.dependency.PlayUI;
+import rps.dependency.PlayResultProcessorDelegate;
 import rps.dependency.RoundsRepo;
 import rps.entity.Results;
 import rps.entity.Round;
@@ -15,7 +15,7 @@ public class RPS implements RockPaperScissors {
     }
 
     @Override
-    public <P> P playRound(Throws p1Throw, Throws p2Throw, PlayUI<P> ui) {
+    public <P> P playRound(Throws p1Throw, Throws p2Throw, PlayResultProcessorDelegate<P> ui) {
         if (p1Throw.tie(p2Throw)) {
             repo.save(new Round(p1Throw, p2Throw, Results.Tie));
             return ui.tie();

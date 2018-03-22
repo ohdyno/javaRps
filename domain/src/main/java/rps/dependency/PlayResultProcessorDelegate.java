@@ -1,6 +1,6 @@
 package rps.dependency;
 
-public interface PlayUI<T> {
+public interface PlayResultProcessorDelegate<T> {
     T player1Wins();
 
     T player2Wins();
