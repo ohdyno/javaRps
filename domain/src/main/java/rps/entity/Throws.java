@@ -11,6 +11,11 @@ public enum Throws {
         public boolean tie(Throws that) {
             return this == that;
         }
+
+        @Override
+        public <T> T print(ThrowsPrinter<T> printer) {
+            return printer.rock();
+        }
     },
 
     Paper {
@@ -22,6 +27,11 @@ public enum Throws {
         @Override
         public boolean tie(Throws that) {
             return this == that;
+        }
+
+        @Override
+        public <T> T print(ThrowsPrinter<T> printer) {
+            return printer.paper();
         }
     },
 
@@ -35,9 +45,16 @@ public enum Throws {
         public boolean tie(Throws that) {
             return this == that;
         }
+
+        @Override
+        public <T> T print(ThrowsPrinter<T> printer) {
+            return printer.scissors();
+        }
     };
 
     public abstract boolean beats(Throws that);
 
     public abstract boolean tie(Throws that);
+
+    public abstract <T> T print(ThrowsPrinter<T> printer);
 }
