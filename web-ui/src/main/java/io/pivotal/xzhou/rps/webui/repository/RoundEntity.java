@@ -1,8 +1,8 @@
 package io.pivotal.xzhou.rps.webui.repository;
 
+import rps.entity.Throws;
 import rps.entity.result.Result;
 import rps.entity.Round;
-import rps.entity.Throws;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
