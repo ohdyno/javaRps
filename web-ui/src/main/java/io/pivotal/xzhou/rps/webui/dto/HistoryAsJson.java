@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import rps.entity.ResultPrinter;
 import rps.entity.Round;
-import rps.entity.ThrowsPrinter;
+import rps.entity.ShapesPrinter;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -50,7 +50,7 @@ public class HistoryAsJson implements JsonContainer {
             return round.printResult(new JsonPrinter());
         }
 
-        private class JsonPrinter implements ThrowsPrinter<String>,ResultPrinter<String> {
+        private class JsonPrinter implements ShapesPrinter<String>,ResultPrinter<String> {
             @Override
             public String rock() {
                 return "rock";

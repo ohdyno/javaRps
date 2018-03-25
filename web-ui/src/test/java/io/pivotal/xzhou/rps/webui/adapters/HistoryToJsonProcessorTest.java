@@ -3,7 +3,7 @@ package io.pivotal.xzhou.rps.webui.adapters;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.JsonExpectationsHelper;
-import rps.entity.Throws;
+import rps.entity.Shapes;
 import rps.entity.result.Result;
 import rps.entity.Round;
 
@@ -33,8 +33,8 @@ public class HistoryToJsonProcessorTest {
                 "]}";
 
         String actual = subject.roundsPlayed(Arrays.asList(
-                new Round(Throws.Rock(), Throws.Paper(), Result.Player2Wins()),
-                new Round(Throws.Scissors(), Throws.Scissors(), Result.Tie())));
+                new Round(Shapes.Rock(), Shapes.Paper(), Result.Player2Wins()),
+                new Round(Shapes.Scissors(), Shapes.Scissors(), Result.Tie())));
 
         jsonExpectationsHelper.assertJsonEqual(expected, actual);
     }

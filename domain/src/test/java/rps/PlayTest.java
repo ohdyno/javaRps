@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import rps.dependency.PlayResultProcessorDelegate;
 import rps.doubles.play.ResultProcessorProcessorDelegateStub;
 import rps.doubles.repo.RoundsRepositoryDummy;
-import rps.exceptions.InvalidThrows;
+import rps.exceptions.InvalidShape;
 
 import java.util.Collection;
 
@@ -78,7 +78,7 @@ public class PlayTest {
             scenario("invalid throws", () -> {
                 Variable<String> player1Throw = new Variable<>();
                 Variable<String> player2Throw = new Variable<>();
-                Variable<InvalidThrows> invalidThrows = new Variable<>();
+                Variable<InvalidShape> invalidThrows = new Variable<>();
 
                 given("invalid throws for both throws", () -> {
                     player1Throw.set("sailboat");
@@ -88,13 +88,13 @@ public class PlayTest {
                 when("play a round", () -> {
                     try {
                         rps.playRound(player1Throw.get(), player2Throw.get(), stub);
-                    } catch (InvalidThrows e) {
+                    } catch (InvalidShape e) {
                         invalidThrows.set(e);
                     }
                 });
 
                 then("receive an exception that contains a list of invalid throws", () -> {
-                    Collection<String> invalidThrowsFromException = invalidThrows.get().getInvalidThrows();
+                    Collection<String> invalidThrowsFromException = invalidThrows.get().getInvalids();
                     assertThat(invalidThrowsFromException).containsExactlyInAnyOrder(player1Throw.get(), player2Throw.get());
                 });
             });

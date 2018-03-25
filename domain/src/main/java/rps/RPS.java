@@ -4,9 +4,9 @@ import rps.dependency.HistoryProcessorDelegate;
 import rps.dependency.PlayResultProcessorDelegate;
 import rps.dependency.RoundsRepository;
 import rps.entity.Round;
-import rps.entity.Throws;
+import rps.entity.Shapes;
 import rps.entity.result.Result;
-import rps.exceptions.InvalidThrows;
+import rps.exceptions.InvalidShape;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,12 +20,12 @@ public class RPS {
         this.repo = repo;
     }
 
-    public <P> P playRound(String p1Throw, String p2Throw, PlayResultProcessorDelegate<P> ui) throws InvalidThrows {
+    public <P> P playRound(String p1Throw, String p2Throw, PlayResultProcessorDelegate<P> ui) throws InvalidShape {
         validateThrows(p1Throw, p2Throw);
         return playRound(convertToThrow(p1Throw), convertToThrow(p2Throw), ui);
     }
 
-    private void validateThrows(String... rpsThrows) throws InvalidThrows {
+    private void validateThrows(String... rpsThrows) throws InvalidShape {
         List<String> invalidThrows = new ArrayList<>();
         Function<String, Boolean> isInvalidThrow = (String rpsThrow) -> !(rpsThrow.equalsIgnoreCase("rock") || rpsThrow.equalsIgnoreCase("scissors") || rpsThrow.equalsIgnoreCase("paper"));
         Arrays.stream(rpsThrows).forEach((rpsThrow -> {
@@ -35,21 +35,21 @@ public class RPS {
         }));
 
         if (!invalidThrows.isEmpty()) {
-            throw new InvalidThrows(invalidThrows);
+            throw new InvalidShape(invalidThrows);
         }
     }
 
-    private Throws convertToThrow(String rpsThrow) {
+    private Shapes convertToThrow(String rpsThrow) {
         if (rpsThrow.equalsIgnoreCase("rock")) {
-            return Throws.Rock();
+            return Shapes.Rock();
         } else if (rpsThrow.equalsIgnoreCase("scissors")) {
-            return Throws.Scissors();
+            return Shapes.Scissors();
         } else {
-            return Throws.Paper();
+            return Shapes.Paper();
         }
     }
 
-    private <P> P playRound(Throws p1Throw, Throws p2Throw, PlayResultProcessorDelegate<P> ui) {
+    private <P> P playRound(Shapes p1Throw, Shapes p2Throw, PlayResultProcessorDelegate<P> ui) {
         if (p1Throw.tie(p2Throw)) {
             repo.save(new Round(p1Throw, p2Throw, Result.Tie()));
             return ui.tie();

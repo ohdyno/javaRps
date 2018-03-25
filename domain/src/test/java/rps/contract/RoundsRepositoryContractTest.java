@@ -3,7 +3,7 @@ package rps.contract;
 import org.junit.Test;
 import rps.dependency.RoundsRepository;
 import rps.entity.Round;
-import rps.entity.Throws;
+import rps.entity.Shapes;
 import rps.entity.result.Result;
 
 import java.util.Collection;
@@ -23,8 +23,8 @@ public abstract class RoundsRepositoryContractTest {
     @Test
     public void givenRoundsWereSaved_whenGettingTheHistory_thenTheResultContainsAllOfTheRounds() {
         RoundsRepository repo = createRepo();
-        Round round1 = new Round(Throws.Rock(), Throws.Paper(), Result.Tie());
-        Round round2 = new Round(Throws.Rock(), Throws.Scissors(), Result.Tie());
+        Round round1 = new Round(Shapes.Rock(), Shapes.Paper(), Result.Tie());
+        Round round2 = new Round(Shapes.Rock(), Shapes.Scissors(), Result.Tie());
         repo.save(round1);
         repo.save(round2);
 

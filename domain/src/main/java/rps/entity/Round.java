@@ -7,15 +7,15 @@ import rps.entity.result.Result;
 @EqualsAndHashCode
 @AllArgsConstructor
 public class Round {
-    private final Throws p1Throw;
-    private final Throws p2Throw;
+    private final Shapes p1Throw;
+    private final Shapes p2Throw;
     private final Result result;
 
-    public <T> T printPlayer1Throw(ThrowsPrinter<T> printer) {
+    public <T> T printPlayer1Throw(ShapesPrinter<T> printer) {
         return p1Throw.print(printer);
     }
 
-    public <T> T printPlayer2Throw(ThrowsPrinter<T> printer) {
+    public <T> T printPlayer2Throw(ShapesPrinter<T> printer) {
         return p2Throw.print(printer);
     }
 
@@ -23,11 +23,11 @@ public class Round {
         return result;
     }
 
-    public Throws getP1Throw() {
+    public Shapes getP1Throw() {
         return p1Throw;
     }
 
-    public Throws getP2Throw() {
+    public Shapes getP2Throw() {
         return p2Throw;
     }
 

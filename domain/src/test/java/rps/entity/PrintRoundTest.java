@@ -19,7 +19,7 @@ public class PrintRoundTest {
             final String rockPrint = "print a rock";
             final String paperPrint = "print a paper";
             final String scissorsPrint = "print scissors";
-            ThrowsPrinter<String> stub = new ThrowsPrinter<String>() {
+            ShapesPrinter<String> stub = new ShapesPrinter<String>() {
                 @Override
                 public String rock() {
                     return rockPrint;
@@ -50,9 +50,9 @@ public class PrintRoundTest {
                         });
                     },
                     withExamples(
-                            example(Throws.Rock(), rockPrint),
-                            example(Throws.Paper(), paperPrint),
-                            example(Throws.Scissors(), scissorsPrint)
+                            example(Shapes.Rock(), rockPrint),
+                            example(Shapes.Paper(), paperPrint),
+                            example(Shapes.Scissors(), scissorsPrint)
                     )
             );
 
@@ -70,9 +70,9 @@ public class PrintRoundTest {
                         });
                     },
                     withExamples(
-                            example(Throws.Rock(), rockPrint),
-                            example(Throws.Paper(), paperPrint),
-                            example(Throws.Scissors(), scissorsPrint)
+                            example(Shapes.Rock(), rockPrint),
+                            example(Shapes.Paper(), paperPrint),
+                            example(Shapes.Scissors(), scissorsPrint)
                     )
             );
         });
