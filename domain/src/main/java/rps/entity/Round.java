@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 public class Round {
     private final Throws p1Throw;
     private final Throws p2Throw;
-    private final Result result;
+    private final ResultTemporary result;
 
     public <T> T printPlayer1Throw(ThrowsPrinter<T> printer) {
         return p1Throw.print(printer);
@@ -18,7 +18,7 @@ public class Round {
         return p2Throw.print(printer);
     }
 
-    public Result getResult() {
+    public ResultTemporary getResult() {
         return result;
     }
 

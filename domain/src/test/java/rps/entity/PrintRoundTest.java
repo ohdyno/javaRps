@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static rps.entity.Result.*;
 import static rps.entity.Throws.*;
 
 @RunWith(Spectrum.class)
@@ -116,9 +115,9 @@ public class PrintRoundTest {
                         });
                     },
                     withExamples(
-                            example(Tie(), tiePrint),
-                            example(Player1Wins(), player1WinsPrint),
-                            example(Player2Wins(), player2WinsPrint)
+                            example(ResultTemporary.Tie(), tiePrint),
+                            example(ResultTemporary.Player1Wins(), player1WinsPrint),
+                            example(ResultTemporary.Player2Wins(), player2WinsPrint)
                     )
             );
         });

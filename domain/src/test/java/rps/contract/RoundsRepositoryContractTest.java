@@ -2,12 +2,12 @@ package rps.contract;
 
 import org.junit.Test;
 import rps.dependency.RoundsRepository;
+import rps.entity.ResultTemporary;
 import rps.entity.Round;
 
 import java.util.Collection;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static rps.entity.Result.Tie;
 import static rps.entity.Throws.*;
 
 public abstract class RoundsRepositoryContractTest {
@@ -23,8 +23,8 @@ public abstract class RoundsRepositoryContractTest {
     @Test
     public void givenRoundsWereSaved_whenGettingTheHistory_thenTheResultContainsAllOfTheRounds() {
         RoundsRepository repo = createRepo();
-        Round round1 = new Round(Rock, Paper, Tie());
-        Round round2 = new Round(Rock, Scissors, Tie());
+        Round round1 = new Round(Rock, Paper, ResultTemporary.Tie());
+        Round round2 = new Round(Rock, Scissors, ResultTemporary.Tie());
         repo.save(round1);
         repo.save(round2);
 
