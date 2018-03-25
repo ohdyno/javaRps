@@ -1,14 +1,14 @@
 package rps.entity;
 
-public enum Throws {
+public enum Throws implements ThrowsTemporary {
     Rock {
         @Override
-        public boolean beats(Throws that) {
-            return that == Scissors();
+        public boolean beats(ThrowsTemporary that) {
+            return that == ThrowsTemporary.Scissors();
         }
 
         @Override
-        public boolean tie(Throws that) {
+        public boolean tie(ThrowsTemporary that) {
             return this == that;
         }
 
@@ -20,12 +20,12 @@ public enum Throws {
 
     Paper {
         @Override
-        public boolean beats(Throws that) {
-            return that == Rock();
+        public boolean beats(ThrowsTemporary that) {
+            return that == ThrowsTemporary.Rock();
         }
 
         @Override
-        public boolean tie(Throws that) {
+        public boolean tie(ThrowsTemporary that) {
             return this == that;
         }
 
@@ -37,12 +37,12 @@ public enum Throws {
 
     Scissors {
         @Override
-        public boolean beats(Throws that) {
-            return that == Paper();
+        public boolean beats(ThrowsTemporary that) {
+            return that == ThrowsTemporary.Paper();
         }
 
         @Override
-        public boolean tie(Throws that) {
+        public boolean tie(ThrowsTemporary that) {
             return this == that;
         }
 
@@ -50,23 +50,5 @@ public enum Throws {
         public <T> T print(ThrowsPrinter<T> printer) {
             return printer.scissors();
         }
-    };
-
-    public abstract boolean beats(Throws that);
-
-    public abstract boolean tie(Throws that);
-
-    public abstract <T> T print(ThrowsPrinter<T> printer);
-
-    public static Throws Rock() {
-        return Rock;
-    }
-
-    public static Throws Paper() {
-        return Paper;
-    }
-
-    public static Throws Scissors() {
-        return Scissors;
     }
 }

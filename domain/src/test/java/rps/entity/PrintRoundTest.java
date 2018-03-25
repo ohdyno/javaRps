@@ -7,7 +7,6 @@ import rps.entity.result.Result;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static rps.entity.Throws.*;
 
 @RunWith(Spectrum.class)
 public class PrintRoundTest {
@@ -51,9 +50,9 @@ public class PrintRoundTest {
                         });
                     },
                     withExamples(
-                            example(Rock(), rockPrint),
-                            example(Paper(), paperPrint),
-                            example(Scissors(), scissorsPrint)
+                            example(ThrowsTemporary.Rock(), rockPrint),
+                            example(ThrowsTemporary.Paper(), paperPrint),
+                            example(ThrowsTemporary.Scissors(), scissorsPrint)
                     )
             );
 
@@ -71,9 +70,9 @@ public class PrintRoundTest {
                         });
                     },
                     withExamples(
-                            example(Rock(), rockPrint),
-                            example(Paper(), paperPrint),
-                            example(Scissors(), scissorsPrint)
+                            example(ThrowsTemporary.Rock(), rockPrint),
+                            example(ThrowsTemporary.Paper(), paperPrint),
+                            example(ThrowsTemporary.Scissors(), scissorsPrint)
                     )
             );
         });

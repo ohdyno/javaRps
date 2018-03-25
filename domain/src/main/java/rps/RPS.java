@@ -3,17 +3,15 @@ package rps;
 import rps.dependency.HistoryProcessorDelegate;
 import rps.dependency.PlayResultProcessorDelegate;
 import rps.dependency.RoundsRepository;
-import rps.entity.result.Result;
 import rps.entity.Round;
-import rps.entity.Throws;
+import rps.entity.ThrowsTemporary;
+import rps.entity.result.Result;
 import rps.exceptions.InvalidThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
-
-import static rps.entity.Throws.*;
 
 public class RPS {
     private final RoundsRepository repo;
@@ -41,17 +39,17 @@ public class RPS {
         }
     }
 
-    private Throws convertToThrow(String rpsThrow) {
+    private ThrowsTemporary convertToThrow(String rpsThrow) {
         if (rpsThrow.equalsIgnoreCase("rock")) {
-            return Rock();
+            return ThrowsTemporary.Rock();
         } else if (rpsThrow.equalsIgnoreCase("scissors")) {
-            return Scissors();
+            return ThrowsTemporary.Scissors();
         } else {
-            return Paper();
+            return ThrowsTemporary.Paper();
         }
     }
 
-    private <P> P playRound(Throws p1Throw, Throws p2Throw, PlayResultProcessorDelegate<P> ui) {
+    private <P> P playRound(ThrowsTemporary p1Throw, ThrowsTemporary p2Throw, PlayResultProcessorDelegate<P> ui) {
         if (p1Throw.tie(p2Throw)) {
             repo.save(new Round(p1Throw, p2Throw, Result.Tie()));
             return ui.tie();
