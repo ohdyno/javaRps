@@ -3,8 +3,8 @@ package io.pivotal.xzhou.rps.webui.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import rps.entity.ResultPrinter;
 import rps.entity.Round;
-import rps.entity.Throws;
 import rps.entity.ThrowsPrinter;
 
 import java.util.ArrayList;
@@ -47,19 +47,10 @@ public class HistoryAsJson implements JsonContainer {
 
         @JsonProperty("result")
         public String jsonifyResult() {
-            switch (round.getResult()) {
-                case Tie:
-                    return "tie";
-                case Player1Wins:
-                    return "player 1 wins";
-                case Player2Wins:
-                    return "player 2 wins";
-                default:
-                    return "";
-            }
+            return round.printResult(new JsonPrinter());
         }
 
-        private class JsonPrinter implements ThrowsPrinter<String> {
+        private class JsonPrinter implements ThrowsPrinter<String>,ResultPrinter<String> {
             @Override
             public String rock() {
                 return "rock";
@@ -73,6 +64,21 @@ public class HistoryAsJson implements JsonContainer {
             @Override
             public String scissors() {
                 return "scissors";
+            }
+
+            @Override
+            public String tie() {
+                return "tie";
+            }
+
+            @Override
+            public String player1Wins() {
+                return "player 1 wins";
+            }
+
+            @Override
+            public String player2Wins() {
+                return "player 2 wins";
             }
         }
     }
