@@ -1,8 +1,8 @@
 package rps;
 
-import rps.dependency.HistoryProcessorDelegate;
-import rps.dependency.PlayResultProcessorDelegate;
-import rps.dependency.RoundsRepository;
+import rps.dependency.processor.HistoryProcessorDelegate;
+import rps.dependency.processor.PlayResultProcessorDelegate;
+import rps.dependency.repository.RoundsRepository;
 import rps.entity.Round;
 import rps.entity.shapes.Shapes;
 import rps.entity.result.Result;

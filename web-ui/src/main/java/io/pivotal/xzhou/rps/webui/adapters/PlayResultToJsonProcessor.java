@@ -1,7 +1,7 @@
 package io.pivotal.xzhou.rps.webui.adapters;
 
 import io.pivotal.xzhou.rps.webui.dto.PlayResultAsJson;
-import rps.dependency.PlayResultProcessorDelegate;
+import rps.dependency.processor.PlayResultProcessorDelegate;
 
 public class PlayResultToJsonProcessor implements PlayResultProcessorDelegate<String> {
 

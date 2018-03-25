@@ -3,9 +3,10 @@ package rps.entity;
 import com.greghaskins.spectrum.Spectrum;
 import com.greghaskins.spectrum.Variable;
 import org.junit.runner.RunWith;
+import rps.dependency.printer.ResultPrinter;
 import rps.entity.result.Result;
 import rps.entity.shapes.Shapes;
-import rps.entity.shapes.ShapesPrinter;
+import rps.dependency.printer.ShapesPrinter;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.*;
 import static org.assertj.core.api.Assertions.assertThat;

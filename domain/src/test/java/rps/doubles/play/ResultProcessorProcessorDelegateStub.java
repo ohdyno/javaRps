@@ -1,6 +1,6 @@
 package rps.doubles.play;
 
-import rps.dependency.PlayResultProcessorDelegate;
+import rps.dependency.processor.PlayResultProcessorDelegate;
 
 public class ResultProcessorProcessorDelegateStub implements PlayResultProcessorDelegate<String> {
     private final String messageForPlayer1Wins;

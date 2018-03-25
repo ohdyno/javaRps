@@ -1,6 +1,6 @@
 package rps.doubles.play;
 
-import rps.dependency.PlayResultProcessorDelegate;
+import rps.dependency.processor.PlayResultProcessorDelegate;
 
 public class PlayResultProcessorDelegateDummy implements PlayResultProcessorDelegate<Void> {
     @Override

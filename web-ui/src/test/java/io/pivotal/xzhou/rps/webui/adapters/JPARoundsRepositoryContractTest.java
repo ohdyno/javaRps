@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import rps.contract.RoundsRepositoryContractTest;
-import rps.dependency.RoundsRepository;
+import rps.dependency.repository.RoundsRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

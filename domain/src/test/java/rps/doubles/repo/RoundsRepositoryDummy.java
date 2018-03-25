@@ -1,6 +1,6 @@
 package rps.doubles.repo;
 
-import rps.dependency.RoundsRepository;
+import rps.dependency.repository.RoundsRepository;
 import rps.entity.Round;
 
 import java.util.Collection;

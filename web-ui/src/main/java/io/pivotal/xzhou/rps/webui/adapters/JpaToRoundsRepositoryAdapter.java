@@ -3,7 +3,7 @@ package io.pivotal.xzhou.rps.webui.adapters;
 import io.pivotal.xzhou.rps.webui.repository.RoundEntity;
 import io.pivotal.xzhou.rps.webui.repository.RoundEntityRepository;
 import rps.entity.Round;
-import rps.dependency.RoundsRepository;
+import rps.dependency.repository.RoundsRepository;
 
 import java.util.Collection;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package rps.dependency;
+package rps.dependency.repository;
 
 import rps.entity.Round;
 

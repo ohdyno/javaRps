@@ -1,6 +1,6 @@
 package rps.doubles.history;
 
-import rps.dependency.HistoryProcessorDelegate;
+import rps.dependency.processor.HistoryProcessorDelegate;
 import rps.entity.Round;
 
 import java.util.ArrayList;

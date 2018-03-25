@@ -1,4 +1,4 @@
-package rps.dependency;
+package rps.dependency.processor;
 
 public interface PlayResultProcessorDelegate<T> {
     T player1Wins();

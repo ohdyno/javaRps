@@ -1,7 +1,7 @@
 package rps.entity.result;
 
 import lombok.EqualsAndHashCode;
-import rps.entity.ResultPrinter;
+import rps.dependency.printer.ResultPrinter;
 
 @EqualsAndHashCode
 public class Player2Wins implements Result {

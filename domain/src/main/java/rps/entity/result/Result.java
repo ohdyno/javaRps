@@ -1,6 +1,6 @@
 package rps.entity.result;
 
-import rps.entity.ResultPrinter;
+import rps.dependency.printer.ResultPrinter;
 
 public interface Result {
     <R> R print(ResultPrinter<R> printer);

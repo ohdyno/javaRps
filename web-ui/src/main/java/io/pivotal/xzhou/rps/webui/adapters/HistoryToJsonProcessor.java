@@ -1,7 +1,7 @@
 package io.pivotal.xzhou.rps.webui.adapters;
 
 import io.pivotal.xzhou.rps.webui.dto.HistoryAsJson;
-import rps.dependency.HistoryProcessorDelegate;
+import rps.dependency.processor.HistoryProcessorDelegate;
 import rps.entity.Round;
 
 import java.util.ArrayList;

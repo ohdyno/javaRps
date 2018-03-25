@@ -1,7 +1,7 @@
 package rps.contract;
 
 import org.junit.Test;
-import rps.dependency.RoundsRepository;
+import rps.dependency.repository.RoundsRepository;
 import rps.entity.Round;
 import rps.entity.shapes.Shapes;
 import rps.entity.result.Result;

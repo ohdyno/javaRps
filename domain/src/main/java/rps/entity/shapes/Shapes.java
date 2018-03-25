@@ -1,5 +1,7 @@
 package rps.entity.shapes;
 
+import rps.dependency.printer.ShapesPrinter;
+
 public interface Shapes {
 
     boolean beats(Shapes that);

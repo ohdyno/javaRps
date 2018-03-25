@@ -1,4 +1,4 @@
-package rps.entity;
+package rps.dependency.printer;
 
 public interface ResultPrinter<R> {
     R tie();

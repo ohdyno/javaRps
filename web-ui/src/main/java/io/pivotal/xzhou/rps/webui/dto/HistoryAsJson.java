@@ -3,9 +3,9 @@ package io.pivotal.xzhou.rps.webui.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import rps.entity.ResultPrinter;
+import rps.dependency.printer.ResultPrinter;
 import rps.entity.Round;
-import rps.entity.shapes.ShapesPrinter;
+import rps.dependency.printer.ShapesPrinter;
 
 import java.util.ArrayList;
 import java.util.Collection;

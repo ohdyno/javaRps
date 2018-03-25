@@ -1,6 +1,7 @@
 package rps.entity.shapes;
 
 import lombok.EqualsAndHashCode;
+import rps.dependency.printer.ShapesPrinter;
 
 @EqualsAndHashCode
 public class Paper implements Shapes {

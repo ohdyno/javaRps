@@ -3,7 +3,7 @@ package rps;
 import com.greghaskins.spectrum.Spectrum;
 import com.greghaskins.spectrum.Variable;
 import org.junit.runner.RunWith;
-import rps.dependency.PlayResultProcessorDelegate;
+import rps.dependency.processor.PlayResultProcessorDelegate;
 import rps.doubles.play.ResultProcessorProcessorDelegateStub;
 import rps.doubles.repo.RoundsRepositoryDummy;
 import rps.exceptions.InvalidShape;

@@ -2,9 +2,10 @@ package rps.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import rps.dependency.printer.ResultPrinter;
 import rps.entity.result.Result;
 import rps.entity.shapes.Shapes;
-import rps.entity.shapes.ShapesPrinter;
+import rps.dependency.printer.ShapesPrinter;
 
 @EqualsAndHashCode
 @AllArgsConstructor
