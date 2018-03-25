@@ -7,7 +7,7 @@ import rps.entity.Round;
 
 import java.util.Arrays;
 
-import static rps.entity.Results.*;
+import static rps.entity.Result.*;
 import static rps.entity.Throws.*;
 
 public class HistoryToJsonProcessorTest {

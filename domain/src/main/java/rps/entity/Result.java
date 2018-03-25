@@ -1,6 +1,6 @@
 package rps.entity;
 
-public enum Results {
+public enum Result {
     Player1Wins {
         @Override
         public <R> R print(ResultPrinter<R> printer) {

@@ -1,6 +1,6 @@
 package io.pivotal.xzhou.rps.webui.repository;
 
-import rps.entity.Results;
+import rps.entity.Result;
 import rps.entity.Round;
 import rps.entity.Throws;
 
@@ -16,7 +16,7 @@ public class RoundEntity {
 
     private Throws p1Throw;
     private Throws p2Throw;
-    private Results result;
+    private Result result;
 
     protected RoundEntity() {
     }

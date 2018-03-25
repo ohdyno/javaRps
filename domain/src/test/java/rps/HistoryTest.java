@@ -13,8 +13,8 @@ import java.util.function.Supplier;
 
 import static com.greghaskins.spectrum.Spectrum.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static rps.entity.Results.Player1Wins;
-import static rps.entity.Results.Tie;
+import static rps.entity.Result.Player1Wins;
+import static rps.entity.Result.Tie;
 import static rps.entity.Throws.*;
 
 @RunWith(Spectrum.class)

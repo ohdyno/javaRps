@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static rps.entity.Results.*;
+import static rps.entity.Result.*;
 import static rps.entity.Throws.*;
 
 @RunWith(Spectrum.class)
