@@ -3,6 +3,7 @@ package rps.entity;
 import com.greghaskins.spectrum.Spectrum;
 import com.greghaskins.spectrum.Variable;
 import org.junit.runner.RunWith;
+import rps.entity.result.Result;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -115,9 +116,9 @@ public class PrintRoundTest {
                         });
                     },
                     withExamples(
-                            example(ResultTemporary.Tie(), tiePrint),
-                            example(ResultTemporary.Player1Wins(), player1WinsPrint),
-                            example(ResultTemporary.Player2Wins(), player2WinsPrint)
+                            example(Result.Tie(), tiePrint),
+                            example(Result.Player1Wins(), player1WinsPrint),
+                            example(Result.Player2Wins(), player2WinsPrint)
                     )
             );
         });

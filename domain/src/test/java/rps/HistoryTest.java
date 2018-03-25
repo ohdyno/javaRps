@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import rps.doubles.history.HistoryProcessorDelegateStub;
 import rps.doubles.play.PlayResultProcessorDelegateDummy;
 import rps.doubles.repo.FakeRoundsRepository;
-import rps.entity.ResultTemporary;
+import rps.entity.result.Result;
 import rps.entity.Round;
 import rps.entity.Throws;
 
@@ -45,8 +45,8 @@ public class HistoryTest {
 
                         assertThat(history).containsAll(
                                 Arrays.asList(
-                                        new Round(Throws.Rock, Throws.Scissors, ResultTemporary.Player1Wins()),
-                                        new Round(Throws.Paper, Throws.Paper, ResultTemporary.Tie())
+                                        new Round(Throws.Rock, Throws.Scissors, Result.Player1Wins()),
+                                        new Round(Throws.Paper, Throws.Paper, Result.Tie())
                                 )
                         );
                     });

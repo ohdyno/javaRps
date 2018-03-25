@@ -3,7 +3,7 @@ package rps;
 import rps.dependency.HistoryProcessorDelegate;
 import rps.dependency.PlayResultProcessorDelegate;
 import rps.dependency.RoundsRepository;
-import rps.entity.ResultTemporary;
+import rps.entity.result.Result;
 import rps.entity.Round;
 import rps.entity.Throws;
 import rps.exceptions.InvalidThrows;
@@ -53,16 +53,16 @@ public class RPS {
 
     private <P> P playRound(Throws p1Throw, Throws p2Throw, PlayResultProcessorDelegate<P> ui) {
         if (p1Throw.tie(p2Throw)) {
-            repo.save(new Round(p1Throw, p2Throw, ResultTemporary.Tie()));
+            repo.save(new Round(p1Throw, p2Throw, Result.Tie()));
             return ui.tie();
         }
 
         if (p1Throw.beats(p2Throw)) {
-            repo.save(new Round(p1Throw, p2Throw, ResultTemporary.Player1Wins()));
+            repo.save(new Round(p1Throw, p2Throw, Result.Player1Wins()));
             return ui.player1Wins();
         }
 
-        repo.save(new Round(p1Throw, p2Throw, ResultTemporary.Player2Wins()));
+        repo.save(new Round(p1Throw, p2Throw, Result.Player2Wins()));
         return ui.player2Wins();
     }
 

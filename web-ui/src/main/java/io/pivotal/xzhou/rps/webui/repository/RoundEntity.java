@@ -1,6 +1,6 @@
 package io.pivotal.xzhou.rps.webui.repository;
 
-import rps.entity.Result;
+import rps.entity.result.Result;
 import rps.entity.Round;
 import rps.entity.Throws;
 

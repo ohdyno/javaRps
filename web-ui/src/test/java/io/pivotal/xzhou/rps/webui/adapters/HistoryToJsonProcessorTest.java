@@ -3,7 +3,7 @@ package io.pivotal.xzhou.rps.webui.adapters;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.JsonExpectationsHelper;
-import rps.entity.Result;
+import rps.entity.result.Result;
 import rps.entity.Round;
 import rps.entity.Throws;
 
