@@ -6,13 +6,14 @@ import org.junit.runner.RunWith;
 
 import static com.greghaskins.spectrum.dsl.gherkin.Gherkin.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static rps.entity.Results.*;
 import static rps.entity.Throws.*;
 
 @RunWith(Spectrum.class)
-public class RoundPrinterTest {
+public class PrintRoundTest {
 
-    RoundPrinterTest() {
-        feature("Printing a round", () -> {
+    PrintRoundTest() {
+        feature("Printing a throw", () -> {
             Variable<String> printed = new Variable<>();
 
             Variable<Round> round = new Variable<>();
@@ -73,6 +74,51 @@ public class RoundPrinterTest {
                             example(Rock, rockPrint),
                             example(Paper, paperPrint),
                             example(Scissors, scissorsPrint)
+                    )
+            );
+        });
+
+        feature("Printing a result", () -> {
+            Variable<String> printed = new Variable<>();
+
+            Variable<Round> round = new Variable<>();
+            final String tiePrint = "tie";
+            final String player1WinsPrint = "player 1 wins";
+            final String player2WinsPrint = "player 2 wins";
+            ResultPrinter<String> stub = new ResultPrinter<String>() {
+                @Override
+                public String tie() {
+                    return tiePrint;
+                }
+
+                @Override
+                public String player1Wins() {
+                    return player1WinsPrint;
+                }
+
+                @Override
+                public String player2Wins() {
+                    return player2WinsPrint;
+                }
+            };
+
+            scenarioOutline("the result is a tie", (result, resultPrint) -> {
+                        given("result is '" + result.toString() + "'", () -> {
+                            round.set(new Round(null, null, result));
+                        });
+
+                        when("printing the result with a printer", () -> {
+                            printed.set(round.get().printResult(stub));
+                        });
+
+                        then("the result should be '" + resultPrint + "'", () -> {
+                            assertThat(printed.get()).isEqualTo(resultPrint);
+                        });
+                    },
+                    withExamples(
+                            example(Tie, tiePrint),
+                            example(Player1Wins, player1WinsPrint),
+                            example(Player2Wins, player2WinsPrint)
                     )
             );
         });

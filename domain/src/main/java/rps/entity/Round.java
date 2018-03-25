@@ -29,4 +29,8 @@ public class Round {
     public Throws getP2Throw() {
         return p2Throw;
     }
+
+    public <R> R printResult(ResultPrinter<R> printer) {
+        return result.print(printer);
+    }
 }
