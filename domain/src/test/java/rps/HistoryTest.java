@@ -5,7 +5,9 @@ import org.junit.runner.RunWith;
 import rps.doubles.history.HistoryProcessorDelegateStub;
 import rps.doubles.play.PlayResultProcessorDelegateDummy;
 import rps.doubles.repo.FakeRoundsRepository;
+import rps.entity.Result;
 import rps.entity.Round;
+import rps.entity.Throws;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -13,9 +15,6 @@ import java.util.function.Supplier;
 
 import static com.greghaskins.spectrum.Spectrum.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static rps.entity.Result.Player1Wins;
-import static rps.entity.Result.Tie;
-import static rps.entity.Throws.*;
 
 @RunWith(Spectrum.class)
 public class HistoryTest {
@@ -46,8 +45,8 @@ public class HistoryTest {
 
                         assertThat(history).containsAll(
                                 Arrays.asList(
-                                        new Round(Rock, Scissors, Player1Wins),
-                                        new Round(Paper, Paper, Tie)
+                                        new Round(Throws.Rock, Throws.Scissors, Result.Player1Wins),
+                                        new Round(Throws.Paper, Throws.Paper, Result.Tie)
                                 )
                         );
                     });
