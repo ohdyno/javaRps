@@ -116,9 +116,9 @@ public class PrintRoundTest {
                         });
                     },
                     withExamples(
-                            example(Tie, tiePrint),
-                            example(Player1Wins, player1WinsPrint),
-                            example(Player2Wins, player2WinsPrint)
+                            example(Tie(), tiePrint),
+                            example(Player1Wins(), player1WinsPrint),
+                            example(Player2Wins(), player2WinsPrint)
                     )
             );
         });
