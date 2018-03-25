@@ -52,7 +52,7 @@ public class PrintRoundTest {
                     },
                     withExamples(
                             example(Rock(), rockPrint),
-                            example(Paper, paperPrint),
+                            example(Paper(), paperPrint),
                             example(Scissors, scissorsPrint)
                     )
             );
@@ -72,7 +72,7 @@ public class PrintRoundTest {
                     },
                     withExamples(
                             example(Rock(), rockPrint),
-                            example(Paper, paperPrint),
+                            example(Paper(), paperPrint),
                             example(Scissors, scissorsPrint)
                     )
             );

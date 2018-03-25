@@ -38,7 +38,7 @@ public enum Throws {
     Scissors {
         @Override
         public boolean beats(Throws that) {
-            return that == Paper;
+            return that == Paper();
         }
 
         @Override
@@ -60,5 +60,9 @@ public enum Throws {
 
     public static Throws Rock() {
         return Rock;
+    }
+
+    public static Throws Paper() {
+        return Paper;
     }
 }

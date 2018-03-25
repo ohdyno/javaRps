@@ -23,7 +23,7 @@ public abstract class RoundsRepositoryContractTest {
     @Test
     public void givenRoundsWereSaved_whenGettingTheHistory_thenTheResultContainsAllOfTheRounds() {
         RoundsRepository repo = createRepo();
-        Round round1 = new Round(Rock(), Paper, Result.Tie());
+        Round round1 = new Round(Rock(), Paper(), Result.Tie());
         Round round2 = new Round(Rock(), Scissors, Result.Tie());
         repo.save(round1);
         repo.save(round2);

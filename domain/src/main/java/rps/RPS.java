@@ -47,7 +47,7 @@ public class RPS {
         } else if (rpsThrow.equalsIgnoreCase("scissors")) {
             return Scissors;
         } else {
-            return Paper;
+            return Paper();
         }
     }
 
