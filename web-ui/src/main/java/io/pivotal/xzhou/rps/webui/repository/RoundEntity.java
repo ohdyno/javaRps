@@ -1,6 +1,6 @@
 package io.pivotal.xzhou.rps.webui.repository;
 
-import rps.entity.Shapes;
+import rps.entity.shapes.Shapes;
 import rps.entity.result.Result;
 import rps.entity.Round;
 

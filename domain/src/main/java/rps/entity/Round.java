@@ -3,6 +3,8 @@ package rps.entity;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import rps.entity.result.Result;
+import rps.entity.shapes.Shapes;
+import rps.entity.shapes.ShapesPrinter;
 
 @EqualsAndHashCode
 @AllArgsConstructor

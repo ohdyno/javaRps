@@ -1,4 +1,4 @@
-package rps.entity;
+package rps.entity.shapes;
 
 public interface Shapes {
 

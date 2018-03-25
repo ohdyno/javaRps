@@ -6,7 +6,7 @@ import rps.doubles.history.HistoryProcessorDelegateStub;
 import rps.doubles.play.PlayResultProcessorDelegateDummy;
 import rps.doubles.repo.FakeRoundsRepository;
 import rps.entity.Round;
-import rps.entity.Shapes;
+import rps.entity.shapes.Shapes;
 import rps.entity.result.Result;
 
 import java.util.Arrays;

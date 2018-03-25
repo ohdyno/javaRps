@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import rps.entity.ResultPrinter;
 import rps.entity.Round;
-import rps.entity.ShapesPrinter;
+import rps.entity.shapes.ShapesPrinter;
 
 import java.util.ArrayList;
 import java.util.Collection;

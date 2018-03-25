@@ -1,23 +1,23 @@
-package rps.entity;
+package rps.entity.shapes;
 
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode
-public class Paper implements Shapes {
-    private final int id = "paper".hashCode();
+public class Rock implements Shapes {
+    private final int id = "rock".hashCode();
 
     @Override
     public boolean beats(Shapes that) {
-        return that instanceof Rock;
+        return that instanceof Scissors;
     }
 
     @Override
     public boolean tie(Shapes that) {
-        return that instanceof Paper;
+        return that instanceof Rock;
     }
 
     @Override
     public <T> T print(ShapesPrinter<T> printer) {
-        return printer.paper();
+        return printer.rock();
     }
 }

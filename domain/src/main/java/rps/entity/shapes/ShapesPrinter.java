@@ -1,4 +1,4 @@
-package rps.entity;
+package rps.entity.shapes;
 
 public interface ShapesPrinter<S> {
     S rock();

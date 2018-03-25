@@ -3,7 +3,7 @@ package rps.contract;
 import org.junit.Test;
 import rps.dependency.RoundsRepository;
 import rps.entity.Round;
-import rps.entity.Shapes;
+import rps.entity.shapes.Shapes;
 import rps.entity.result.Result;
 
 import java.util.Collection;
