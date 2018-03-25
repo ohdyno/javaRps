@@ -45,7 +45,7 @@ public class HistoryTest {
 
                         assertThat(history).containsAll(
                                 Arrays.asList(
-                                        new Round(Throws.Rock, Throws.Scissors, Result.Player1Wins()),
+                                        new Round(Throws.Rock(), Throws.Scissors, Result.Player1Wins()),
                                         new Round(Throws.Paper, Throws.Paper, Result.Tie())
                                 )
                         );

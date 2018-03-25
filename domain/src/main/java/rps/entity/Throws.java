@@ -21,7 +21,7 @@ public enum Throws {
     Paper {
         @Override
         public boolean beats(Throws that) {
-            return that == Rock;
+            return that == Rock();
         }
 
         @Override
@@ -57,4 +57,8 @@ public enum Throws {
     public abstract boolean tie(Throws that);
 
     public abstract <T> T print(ThrowsPrinter<T> printer);
+
+    public static Throws Rock() {
+        return Rock;
+    }
 }

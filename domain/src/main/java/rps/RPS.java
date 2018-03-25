@@ -43,7 +43,7 @@ public class RPS {
 
     private Throws convertToThrow(String rpsThrow) {
         if (rpsThrow.equalsIgnoreCase("rock")) {
-            return Rock;
+            return Rock();
         } else if (rpsThrow.equalsIgnoreCase("scissors")) {
             return Scissors;
         } else {
