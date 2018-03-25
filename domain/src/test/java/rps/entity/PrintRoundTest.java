@@ -50,9 +50,9 @@ public class PrintRoundTest {
                         });
                     },
                     withExamples(
-                            example(ThrowsTemporary.Rock(), rockPrint),
-                            example(ThrowsTemporary.Paper(), paperPrint),
-                            example(ThrowsTemporary.Scissors(), scissorsPrint)
+                            example(Throws.Rock(), rockPrint),
+                            example(Throws.Paper(), paperPrint),
+                            example(Throws.Scissors(), scissorsPrint)
                     )
             );
 
@@ -70,9 +70,9 @@ public class PrintRoundTest {
                         });
                     },
                     withExamples(
-                            example(ThrowsTemporary.Rock(), rockPrint),
-                            example(ThrowsTemporary.Paper(), paperPrint),
-                            example(ThrowsTemporary.Scissors(), scissorsPrint)
+                            example(Throws.Rock(), rockPrint),
+                            example(Throws.Paper(), paperPrint),
+                            example(Throws.Scissors(), scissorsPrint)
                     )
             );
         });

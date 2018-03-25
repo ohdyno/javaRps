@@ -3,16 +3,16 @@ package rps.entity;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode
-public class Paper implements ThrowsTemporary {
+public class Paper implements Throws {
     private final int id = "paper".hashCode();
 
     @Override
-    public boolean beats(ThrowsTemporary that) {
+    public boolean beats(Throws that) {
         return that instanceof Rock;
     }
 
     @Override
-    public boolean tie(ThrowsTemporary that) {
+    public boolean tie(Throws that) {
         return that instanceof Paper;
     }
 

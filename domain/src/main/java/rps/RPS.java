@@ -4,7 +4,7 @@ import rps.dependency.HistoryProcessorDelegate;
 import rps.dependency.PlayResultProcessorDelegate;
 import rps.dependency.RoundsRepository;
 import rps.entity.Round;
-import rps.entity.ThrowsTemporary;
+import rps.entity.Throws;
 import rps.entity.result.Result;
 import rps.exceptions.InvalidThrows;
 
@@ -39,17 +39,17 @@ public class RPS {
         }
     }
 
-    private ThrowsTemporary convertToThrow(String rpsThrow) {
+    private Throws convertToThrow(String rpsThrow) {
         if (rpsThrow.equalsIgnoreCase("rock")) {
-            return ThrowsTemporary.Rock();
+            return Throws.Rock();
         } else if (rpsThrow.equalsIgnoreCase("scissors")) {
-            return ThrowsTemporary.Scissors();
+            return Throws.Scissors();
         } else {
-            return ThrowsTemporary.Paper();
+            return Throws.Paper();
         }
     }
 
-    private <P> P playRound(ThrowsTemporary p1Throw, ThrowsTemporary p2Throw, PlayResultProcessorDelegate<P> ui) {
+    private <P> P playRound(Throws p1Throw, Throws p2Throw, PlayResultProcessorDelegate<P> ui) {
         if (p1Throw.tie(p2Throw)) {
             repo.save(new Round(p1Throw, p2Throw, Result.Tie()));
             return ui.tie();

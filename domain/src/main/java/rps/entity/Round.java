@@ -7,8 +7,8 @@ import rps.entity.result.Result;
 @EqualsAndHashCode
 @AllArgsConstructor
 public class Round {
-    private final ThrowsTemporary p1Throw;
-    private final ThrowsTemporary p2Throw;
+    private final Throws p1Throw;
+    private final Throws p2Throw;
     private final Result result;
 
     public <T> T printPlayer1Throw(ThrowsPrinter<T> printer) {
@@ -23,11 +23,11 @@ public class Round {
         return result;
     }
 
-    public ThrowsTemporary getP1Throw() {
+    public Throws getP1Throw() {
         return p1Throw;
     }
 
-    public ThrowsTemporary getP2Throw() {
+    public Throws getP2Throw() {
         return p2Throw;
     }
 
