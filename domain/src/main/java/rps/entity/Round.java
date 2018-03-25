@@ -17,4 +17,16 @@ public class Round {
     public <T> T printPlayer2Throw(ThrowsPrinter<T> printer) {
         return p2Throw.print(printer);
     }
+
+    public Results getResult() {
+        return result;
+    }
+
+    public Throws getP1Throw() {
+        return p1Throw;
+    }
+
+    public Throws getP2Throw() {
+        return p2Throw;
+    }
 }

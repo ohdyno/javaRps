@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import rps.entity.Round;
 import rps.entity.Throws;
+import rps.entity.ThrowsPrinter;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -36,12 +37,12 @@ public class HistoryAsJson implements JsonContainer {
 
         @JsonProperty("p1")
         public String jsonifyP1Throw() {
-            return jsonifyThrow(round.getP1Throw());
+            return round.printPlayer1Throw(new JsonPrinter());
         }
 
         @JsonProperty("p2")
         public String jsonifyP2Throw() {
-            return jsonifyThrow(round.getP2Throw());
+            return round.printPlayer2Throw(new JsonPrinter());
         }
 
         @JsonProperty("result")
@@ -58,16 +59,20 @@ public class HistoryAsJson implements JsonContainer {
             }
         }
 
-        private String jsonifyThrow(Throws rpsThrow) {
-            switch (rpsThrow) {
-                case Rock:
-                    return "rock";
-                case Scissors:
-                    return "scissors";
-                case Paper:
-                    return "paper";
-                default:
-                    return "";
+        private class JsonPrinter implements ThrowsPrinter<String> {
+            @Override
+            public String rock() {
+                return "rock";
+            }
+
+            @Override
+            public String paper() {
+                return "paper";
+            }
+
+            @Override
+            public String scissors() {
+                return "scissors";
             }
         }
     }
