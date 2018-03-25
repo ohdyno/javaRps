@@ -45,7 +45,7 @@ public class RPS {
         if (rpsThrow.equalsIgnoreCase("rock")) {
             return Rock();
         } else if (rpsThrow.equalsIgnoreCase("scissors")) {
-            return Scissors;
+            return Scissors();
         } else {
             return Paper();
         }
